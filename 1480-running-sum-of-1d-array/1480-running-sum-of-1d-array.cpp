@@ -3,14 +3,7 @@ public:
     vector<int> runningSum(vector<int>& nums) 
     {
         
-        long int sum=nums[0];
-        
-        for(int i=1;i<nums.size();i++)
-        {
-            sum+=nums[i];
-            nums[i]=sum;
-        }
-        
-        return nums;
+       partial_sum(begin(nums), end(nums), begin(nums));
+    return nums;
     }
 };
