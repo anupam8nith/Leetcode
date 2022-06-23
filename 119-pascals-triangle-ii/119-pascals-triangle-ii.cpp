@@ -1,5 +1,25 @@
-class Solution {
+
+    //best solution
+    
+    class Solution {
 public:
+    vector<int> getRow(int n) {
+        vector<int> ans(n+1,0);
+        ans[0] = 1;
+        for(int i = 1; i<=n; i++){
+            for(int j = i; j>=1; j--){
+                ans[j]+=ans[j-1];
+            }
+        }
+        return ans;
+    }
+};
+    
+    
+    
+    
+    
+    
      // worst solution code works for n<21
     
 //     long int fact(int a)
@@ -47,17 +67,15 @@ public:
 //         }
         
 //         return ans;
-     vector<int> getRow(int rowIndex) 
-     {
-         
-    vector<int> A(rowIndex+1, 0);
-        A[0] = 1;
-        for(int i=1; i<rowIndex+1; i++)
-            for(int j=i; j>=1; j--)
-                A[j] += A[j-1];
-        return A;
     
     
-        
-    }
-};
+    
+    //2nd best solution
+//                  vector<int> getRow(int rowIndex) 
+//                  {
+//                 vector<int> A(rowIndex+1, 0);
+//                     A[0] = 1;
+//                     for(int i=1; i<rowIndex+1; i++)
+//                         for(int j=i; j>=1; j--)
+//                             A[j] += A[j-1];
+//                     return A;
