@@ -23,7 +23,7 @@ public:
     }
 };
 
-//solution 1
+//solution 1 71ms
 
 // class Solution {
 // public:
