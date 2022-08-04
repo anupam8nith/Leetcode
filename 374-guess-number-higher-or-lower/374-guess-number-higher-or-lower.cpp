@@ -17,11 +17,11 @@ public:
         {
             mid= s+ (e-s)/2;
             
-            int gs = guess(mid);
             
-            if(gs==0)
+            
+            if(guess(mid)==0)
                 return mid;
-            else if(gs ==1)       
+            else if(guess(mid) ==1)       
                 s=mid+1;
             else
                 e=mid-1;
