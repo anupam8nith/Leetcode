@@ -18,7 +18,7 @@ public:
             }
         }
         
-        if(target>nums[nums.size()-1] && low!=nums.size())
+        if(target>nums[nums.size()-1] && low<nums.size())
         {
             low++;
         }
