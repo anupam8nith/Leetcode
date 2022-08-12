@@ -17,9 +17,6 @@ public:
                 lo = mid+1;
             
         }
-        
-        
-        
         return -1;
     }
 };
