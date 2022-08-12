@@ -8,17 +8,17 @@ public:
         {
             mid = low + (high-low)/2;
             
-            if(target <= nums[mid])
-            {
-                high = mid;
-            }
+           if(target<= nums[mid])
+           {
+               high = mid;
+           }
             else
             {
                 low = mid+1;
             }
         }
         
-        if(target>nums[nums.size()-1] && low<nums.size())
+        if(target>nums[nums.size()-1] && low!=nums.size())
         {
             low++;
         }
