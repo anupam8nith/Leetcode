@@ -14,14 +14,12 @@ public:
             if(!isBadVersion(mid))
             {
                 low = mid+1;
-                
             }
             else
             {
                 high = mid;
             }
         }
-        
         return low;
     }
 };
