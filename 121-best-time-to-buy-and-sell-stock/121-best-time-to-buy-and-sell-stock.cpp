@@ -2,6 +2,11 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) 
     {
+        ios::sync_with_stdio(false);
+        cin.tie(0);
+        cout.tie(0);
+        
+        
       int select=0, profit=INT_MIN,max_profit=0;
         
         
