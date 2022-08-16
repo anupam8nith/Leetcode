@@ -2,8 +2,8 @@ class Solution {
 public:
     void moveZeroes(vector<int>& nums) 
     {
-        std::ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
+        // std::ios_base::sync_with_stdio(false);
+        // cin.tie(NULL);
             
         int nonzero=0;
         for(int i=0;i<nums.size();i++)
