@@ -2,6 +2,9 @@ class Solution {
 public:
     int firstUniqChar(string s) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         unordered_map<char,int> um1,um2;
         
         for(int i=s.length()-1;i>=0;i--)
