@@ -2,6 +2,9 @@ class Solution {
 public:
     void moveZeroes(vector<int>& nums) 
     {
+        std::ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+            
         int count=0;
         
         auto it = nums.begin();
