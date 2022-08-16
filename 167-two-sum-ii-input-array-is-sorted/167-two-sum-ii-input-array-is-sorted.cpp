@@ -2,6 +2,9 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
+        std::ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+            
         vector<int> ans;
         
         for(auto it=nums.begin();it!=nums.end();it++)
