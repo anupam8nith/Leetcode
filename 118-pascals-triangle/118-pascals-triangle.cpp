@@ -2,10 +2,10 @@ class Solution {
 public:
     vector<vector<int>> generate(int nr) 
     {
+        ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+
         vector<vector<int>> answer;
-        
-        
-        
         for(int i=0;i<nr;i++)
         {
             vector<int> ans(i+1);
