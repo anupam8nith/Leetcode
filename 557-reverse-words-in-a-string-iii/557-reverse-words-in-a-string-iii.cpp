@@ -2,6 +2,9 @@ class Solution {
 public:
     string reverseWords(string s) 
     {
+        std::ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         int front=0;
         for(int i=0;i<=s.size();i++)
         {
