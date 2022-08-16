@@ -6,14 +6,16 @@ public:
         cin.tie(NULL);
         
         int front=0;
-        for(int i=0;i<=s.size();i++)
+        int i=0;
+        for(i=0;i<s.size();i++)
         {
-            if(s[i]==' ' || i==s.size())
+            if(s[i]==' ')
             {
                 reverse(&s[front], &s[i]);
                 front = i+1;
             }
         }
+        reverse(&s[front], &s[i]);
         
         return s;
     }
