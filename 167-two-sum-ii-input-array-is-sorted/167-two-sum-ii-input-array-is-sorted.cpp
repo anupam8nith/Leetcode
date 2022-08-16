@@ -1,28 +1,20 @@
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& numbers, int target) 
+    vector<int> twoSum(vector<int>& nums, int target) 
     {
-         vector <int> ans;
+        vector<int> ans;
         
-       unordered_map <int, int> um;
-        for(int i=0;i<numbers.size();i++)
+        for(auto it=nums.begin();it!=nums.end();it++)
         {
-            um[numbers[i]]= i;
-        }
-        
-        int i=0;
-        
-        while( i< numbers.size())
-        {
-            if(um.find(target - numbers[i]) != um.end() && i!=um[target-numbers[i]]){
-                ans.push_back(i+1);
-                ans.push_back(um[target-numbers[i]]+1);
+            if(binary_search(nums.begin(), nums.end(),target-*it))
+            {
+                ans.push_back((it-nums.begin())+1);
+                int id = lower_bound(it+1, nums.end(),target-*it) - nums.begin() +1;
+                ans.push_back(id);
                 break;
             }
-        i++;
         }
         
         return ans;
-
     }
 };
