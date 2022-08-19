@@ -2,7 +2,7 @@ class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
         // use hashmap
-        /**
+       
         unordered_map<char, int> m;
         for(int i = 0; i < magazine.size(); i++){
             m[magazine[i]] ++;
@@ -17,22 +17,21 @@ public:
             }
         }
         return true;
-        */
         
-        // use array
-        int m [26] = {0};
-        for (int i = 0; i < magazine.size(); i++){
-            m[magazine[i]-'a'] ++;
-        }
+//         // use array
+//         int m [26] = {0};
+//         for (int i = 0; i < magazine.size(); i++){
+//             m[magazine[i]-'a'] ++;
+//         }
         
-        for(int i = 0; i < ransomNote.size(); i++){
-            if(m[ransomNote[i]-'a']>0){
-                m[ransomNote[i]-'a'] --;
-            }else{
-                return false;
-            }
-        }
-        return true;
+//         for(int i = 0; i < ransomNote.size(); i++){
+//             if(m[ransomNote[i]-'a']>0){
+//                 m[ransomNote[i]-'a'] --;
+//             }else{
+//                 return false;
+//             }
+//         }
+//         return true;
     }
 };
 
