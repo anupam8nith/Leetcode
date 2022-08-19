@@ -2,6 +2,10 @@ class Solution {
 public:
     bool canConstruct(string ransom, string magazine) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        
         //store the freq of both
         
         unordered_map<char,int> um1,um2;
