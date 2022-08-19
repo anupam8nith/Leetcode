@@ -2,8 +2,8 @@ class Solution {
 public:
     int firstUniqChar(string s) 
     {
-        // ios_base::sync_with_stdio(false);
-        // cin.tie(NULL);
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         
         unordered_map<char,int> um;
         
