@@ -2,10 +2,10 @@ class Solution {
 public:
     bool isAnagram(string s, string t) 
 {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
+//         ios_base::sync_with_stdio(false);
+//         cin.tie(NULL);
         
-        vector<int> freq(26,0); //onl
+        vector<int> freq(26,0); //only freq
         
         for(auto ch: s) freq[ch-'a']++;
         for(auto ch: t) freq[ch-'a']--;
