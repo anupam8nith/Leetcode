@@ -21,6 +21,9 @@ public:
 
     vector<int> preorderTraversal(TreeNode* root) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         vector<int> p;
         pre(root,p);
         return p;
