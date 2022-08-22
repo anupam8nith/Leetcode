@@ -2,6 +2,9 @@ class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         unordered_map <char,int> um;
         
         //1.check row wise duplicacy
