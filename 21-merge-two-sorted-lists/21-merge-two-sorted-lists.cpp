@@ -12,6 +12,10 @@ class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        
         ListNode *p=list1, *q=list2;
         
         if(!p)
