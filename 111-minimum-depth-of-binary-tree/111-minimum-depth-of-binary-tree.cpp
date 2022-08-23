@@ -14,7 +14,6 @@ public:
     int minDepth(TreeNode* root) {
         //referred
         ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
         if (!root)
             return 0;
         int left = minDepth(root->left);
