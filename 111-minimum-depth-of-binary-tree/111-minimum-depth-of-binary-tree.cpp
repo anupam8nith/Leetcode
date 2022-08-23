@@ -13,6 +13,11 @@ class Solution {
 public:
     int minDepth(TreeNode* root) 
     {
+        //fast io
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        
         if(root==NULL)
             return 0;
         
