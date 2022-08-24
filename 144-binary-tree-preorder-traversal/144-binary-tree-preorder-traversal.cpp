@@ -11,27 +11,50 @@
  */
 class Solution {
 public:
-    
-    //1. recursive
-    
-    void pre(TreeNode* root, vector<int> &a)
+        vector<int> preorderTraversal(TreeNode* root) 
     {
-        if(root==NULL) return;
-        a.push_back(root->val);
-        pre(root->left,a);
-        pre(root->right,a);
-    }
-
-    vector<int> preorderTraversal(TreeNode* root) 
-    {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
+    //iterative 
+        vector<int> preorder;
+        if(root==NULL) return preorder;
+            
+        stack<TreeNode*> st;
+            
+        st.push(root);
         
-        vector<int> p;
-        pre(root,p);
-        return p;
+            while(!st.empty())
+            {
+                TreeNode* curr =st.top();
+                st.pop();
+                
+                preorder.push_back(curr->val);
+                
+                if(curr->right!=NULL) st.push(curr->right);
+                if(curr->left!=NULL) st.push(curr->left);
+                
+                
+            }
+        return preorder;
     }
 };
+
+//1. recursive
+    
+//     void pre(TreeNode* root, vector<int> &a)
+//     {
+//         if(root==NULL) return;
+//         a.push_back(root->val);
+//         pre(root->left,a);
+//         pre(root->right,a);
+//     }
+
+//     vector<int> preorderTraversal(TreeNode* root) 
+//     {
+//         ios_base::sync_with_stdio(false);
+//         cin.tie(NULL);
+        
+//         vector<int> p;
+//         pre(root,p);
+//         return p;
 
 
 //2. Morris (best approach)
