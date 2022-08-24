@@ -13,34 +13,62 @@ class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) 
     {
-        vector<vector<int>> ans; // to store and return the tree in BFS way
-        queue<TreeNode*> q; // queue for storing at every level
-        //if root is null
+        vector<vector<int>> ans;
         if(root==NULL)
             return ans;
-        //loop
-        q.push(root); //put first element of tree in queue
         
-        while(!q.empty()) // exit condition
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while(!q.empty())
         {
+            vector<int>level;
             int size = q.size();
-            vector<int> level; // for storing elements in each level
             
             for(int i=0;i<size;i++)
-            {   
-                TreeNode *curr_node = q.front(); // store the first node in queue and pop it
+            {
+                TreeNode* curr = q.front();
                 q.pop();
                 
-                if(curr_node->left !=NULL) q.push(curr_node->left);
-                if(curr_node->right !=NULL) q.push(curr_node->right);
-                
-                level.push_back(curr_node->val);
+                level.push_back(curr->val);
+                if(curr->left)q.push(curr->left);
+                if(curr->right)q.push(curr->right);
             }
             ans.push_back(level);
-            
         }
-        
-        
         return ans;
     }
 };
+
+
+//working code
+
+// vector<vector<int>> ans; // to store and return the tree in BFS way
+//         queue<TreeNode*> q; // queue for storing at every level
+//         //if root is null
+//         if(root==NULL)
+//             return ans;
+//         //loop
+//         q.push(root); //put first element of tree in queue
+        
+//         while(!q.empty()) // exit condition
+//         {
+//             int size = q.size();
+//             vector<int> level; // for storing elements in each level
+            
+//             for(int i=0;i<size;i++)
+//             {   
+//                 TreeNode *curr_node = q.front(); // store the first node in queue and pop it
+//                 q.pop();
+                
+//                 if(curr_node->left !=NULL) q.push(curr_node->left);
+//                 if(curr_node->right !=NULL) q.push(curr_node->right);
+                
+//                 level.push_back(curr_node->val);
+//             }
+//             ans.push_back(level);
+            
+//         }
+        
+        
+//         return ans;
