@@ -4,6 +4,8 @@ public:
     
     int f(vector<int>&dp, int n)
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         
         dp[0]=0;
         dp[1]=1;
