@@ -12,33 +12,35 @@
 class Solution {
 public:
     int maxDepth(TreeNode* root) 
-    {
-        int count=0;
-        //BFS
+    {        
+        //recursion;
         
-        if(root==NULL)
-            return 0;
+        if(root==NULL) return 0;
+        int l=maxDepth(root->left);
+        int r= maxDepth(root->right);
         
-        queue<TreeNode*> q;
-        q.push(root);
-
-        TreeNode* curr=root;
-        
-        while(!q.empty())
-        {
-            int n= q.size();
-            
-            for(int i=0;i<n;i++)
-            {
-            curr=q.front();
-            q.pop();
-            
-            if(curr->left!=NULL)q.push(curr->left);
-            if(curr->right!=NULL)q.push(curr->right);
-            }
-            count++;
-        }
-            
-        return count;
+        return max(l,r)+1;
     }
 };
+
+//BFS
+//         int count=0;
+//         if(root==NULL)
+//             return 0;
+        
+//         queue<TreeNode*> q;
+//         q.push(root);
+//         TreeNode* curr=root;
+//         while(!q.empty())
+//         {
+//             int n= q.size();
+//             for(int i=0;i<n;i++)
+//             {
+//             curr=q.front();
+//             q.pop();
+//             if(curr->left!=NULL)q.push(curr->left);
+//             if(curr->right!=NULL)q.push(curr->right);
+//             }
+//             count++;
+//         }   
+//         return count;
