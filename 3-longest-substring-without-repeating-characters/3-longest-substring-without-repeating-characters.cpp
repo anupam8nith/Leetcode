@@ -2,8 +2,8 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) 
     {
-        // ios_base::sync_with_stdio(NULL);
-        // cin.tie(NULL);
+        ios_base::sync_with_stdio(NULL);
+        cin.tie(NULL);
         
         if(s.size()<=1)
             return s.size();
