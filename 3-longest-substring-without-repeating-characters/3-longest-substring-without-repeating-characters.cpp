@@ -25,7 +25,13 @@ public:
                 if(um[s[i]]>1)
                 {
                     flag=0;
-                    idx++;
+                    
+                    while(um[s[i]]!=1)
+                    {
+                        
+                        um[s[idx]]--;
+                        idx++;
+                    }
                     
                     if(temp>count)
                     count = temp;
