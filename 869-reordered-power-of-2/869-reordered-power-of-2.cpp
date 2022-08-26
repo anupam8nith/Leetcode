@@ -5,6 +5,9 @@ public:
         if(n==1 || n==2 || n==4 || n==8)
             return true;
         
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         vector<int> digit;
         map<int,int> mp;
         
