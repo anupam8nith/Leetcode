@@ -11,32 +11,62 @@
  */
 class Solution {
 public:
-    
-    int height(TreeNode *root)
+int height(TreeNode *root)
     {
         if(root==NULL) return 0;
         
         int lft = height(root->left);
+        if(lft==-1) return -1;
         int rht = height(root->right);
+        if(rht==-1) return -1;
+    
         
+        if(abs(lft-rht)>1) return -1;
+    
         return max(lft, rht) + 1;
     }
     
-    bool isBalanced(TreeNode* root) 
+bool isBalanced(TreeNode* root) 
     {
-        if(root==NULL) return true; 
+        if(root==NULL) return true;
         
-        int lh = height(root->left);
-        int rh = height(root->right);
-        
-        if(abs(lh-rh)>1) return false;
-        
-        bool left = isBalanced(root->left);
-        bool right = isBalanced(root->right);
-        
-        if(left==false || right==false) return false;
+        if(height(root)==-1)
+            return false;
         
         return true;
-        
     }
 };
+
+//n*n complexity solution
+
+// class Solution {
+// public:
+    
+//     int height(TreeNode *root)
+//     {
+//         if(root==NULL) return 0;
+        
+//         int lft = height(root->left);
+//         int rht = height(root->right);
+        
+//         return max(lft, rht) + 1;
+//     }
+    
+//     bool isBalanced(TreeNode* root) 
+//     {
+//         if(root==NULL) return true; 
+        
+//         int lh = height(root->left);
+//         int rh = height(root->right);
+        
+//         if(abs(lh-rh)>1) return false;
+        
+//         bool left = isBalanced(root->left);
+//         bool right = isBalanced(root->right);
+        
+//         if(left==false || right==false) return false;
+        
+//         return true;
+        
+//     }
+// };
