@@ -11,31 +11,53 @@
  */
 class Solution {
 public:
-int height(TreeNode *root)
-    {
-        if(root==NULL) return 0;
+    bool check = true;
+    int height(TreeNode* root) {
+        if(root == NULL) return 0;
         
-        int lft = height(root->left);
-        if(lft==-1) return -1;
-        int rht = height(root->right);
-        if(rht==-1) return -1;
-    
+        int lh = height(root->left);
+        int rh = height(root->right);
         
-        if(abs(lft-rht)>1) return -1;
-    
-        return max(lft, rht) + 1;
+        if(abs(lh - rh) > 1) check = false;
+        
+        return max(lh,rh) + 1;
+    }
+    bool isBalanced(TreeNode* root) {
+       height(root);      
+        return check;
+          
     }
     
-bool isBalanced(TreeNode* root) 
-    {
-        if(root==NULL) return true;
-        
-        if(height(root)==-1)
-            return false;
-        
-        return true;
-    }
 };
+// O(n) complexity
+
+// class Solution {
+// public:
+// int height(TreeNode *root)
+//     {
+//         if(root==NULL) return 0;
+        
+//         int lft = height(root->left);
+//         if(lft==-1) return -1;
+//         int rht = height(root->right);
+//         if(rht==-1) return -1;
+    
+        
+//         if(abs(lft-rht)>1) return -1;
+    
+//         return max(lft, rht) + 1;
+//     }
+    
+// bool isBalanced(TreeNode* root) 
+//     {
+//         if(root==NULL) return true;
+        
+//         if(height(root)==-1)
+//             return false;
+        
+//         return true;
+//     }
+// };
 
 //n*n complexity solution
 
