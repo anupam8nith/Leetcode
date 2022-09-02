@@ -14,38 +14,51 @@ public:
     
     bool isSameTree(TreeNode* p, TreeNode* q) 
     {
-        if(!p ^ !q)
-            return false;
-        if(p==q) return true;
+        if(!p ^ !q) return false;
         
+      if(p!=NULL && q!=NULL) 
+    return p->val==q->val && isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
         
-        //BFS
-        queue<pair<TreeNode*,TreeNode*>> kyu;
-        kyu.push({p,q});
+    return p==q;
         
-        
-        while(!kyu.empty())
-        {
-            p= kyu.front().first;
-            q= kyu.front().second;
-            kyu.pop();
-            
-            if(p->val!=q->val) return false;
-            if(!p->left ^ !q->left) return false;
-            if(!p->right ^ !q->right) return false;
-            
-            
-            if(p->left!=NULL && q->left!=NULL) kyu.push({p->left,q->left});
-            if(p->right!=NULL && q->right!=NULL) kyu.push({p->right,q->right});
-            
-        }
-    
-        return true;
     }
 };
 
 
+
+// my solution
+
+ //BFS
+        
+//         if(!p ^ !q)
+//             return false;
+//         if(p==q) return true;
+        
+//         queue<pair<TreeNode*,TreeNode*>> kyu;
+//         kyu.push({p,q});
+        
+        
+//         while(!kyu.empty())
+//         {
+//             p= kyu.front().first;
+//             q= kyu.front().second;
+//             kyu.pop();
+            
+//             if(p->val!=q->val) return false;
+//             if(!p->left ^ !q->left) return false;
+//             if(!p->right ^ !q->right) return false;
+            
+            
+//             if(p->left!=NULL && q->left!=NULL) kyu.push({p->left,q->left});
+//             if(p->right!=NULL && q->right!=NULL) kyu.push({p->right,q->right});
+            
+//         }
+    
+//         return true;
+//      
+
 // // Recursively
+
 // bool isSameTree1(TreeNode* p, TreeNode* q) {
 //     if (p && q)
 //         return p->val==q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
