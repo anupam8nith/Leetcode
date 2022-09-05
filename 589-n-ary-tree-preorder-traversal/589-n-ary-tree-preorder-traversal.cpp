@@ -52,3 +52,25 @@ public:
         
     }
 };
+
+//fastest solution
+
+// class Solution {
+// public:
+//     vector<int> ans;
+//     void solve(Node* root)
+//     {
+//         if(root==NULL)return;
+//         ans.push_back(root->val);
+//         for(int i=0;i<root->children.size();i++)
+//         {
+//             solve(root->children[i]);
+//         }
+//     }
+//     vector<int> preorder(Node* root) {
+//         solve(root);
+//         return ans;
+//     }
+// };
+// static bool     _foo = ios::sync_with_stdio(false);
+// static ostream* _bar = cin.tie(NULL);
