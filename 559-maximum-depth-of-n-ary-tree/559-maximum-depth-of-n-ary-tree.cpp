@@ -22,13 +22,39 @@ class Solution {
 public:
     int maxDepth(Node* root) 
     {
-       
-        if(root==NULL) return 0;
+        //BFS
+              
+       if (root == nullptr) return 0;
+        queue<Node*> q; q.push(root);
+        int depth = 0;
+        while (!q.empty()) {
+            depth += 1;
             
-        int ans=0;
-        
-        for(auto p: root->children) ans = max(ans, maxDepth(p));
-        
-        return  1 + ans;
+            int breadth = q.size();
+            for (int i = 0; i < breadth; i++) {
+                auto node = q.front(); 
+                q.pop();
+                
+                for (auto child : node->children) if (child) q.push(child);
+            }
+        }
+        return depth;
     }
 };
+
+
+//DFS
+// class Solution {
+// public:
+//     int maxDepth(Node* root) 
+//     {
+      
+//         if(root==NULL) return 0;
+            
+//         int ans=0;
+        
+//         for(auto p: root->children) ans = max(ans, maxDepth(p));
+        
+//         return  1 + ans;
+//     }
+// };
