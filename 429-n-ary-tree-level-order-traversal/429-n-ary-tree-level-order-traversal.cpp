@@ -44,7 +44,7 @@ public:
                 
                 for(auto nodd : curr->children)
                 {
-                    if(nodd!=NULL) q.push(nodd);
+                    q.push(nodd);
                 }
             }
             
