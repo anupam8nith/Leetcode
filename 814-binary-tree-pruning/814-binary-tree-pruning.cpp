@@ -11,26 +11,12 @@
  */
 class Solution {
 public:
-    
-    bool checkone(TreeNode * root)
-    {
-        if(root==NULL)
-            return false;
-        
-        if(root->val==1) return true;
-        
-        return checkone(root->left) || checkone(root->right);
-    }
-    
     TreeNode* pruneTree(TreeNode* root) 
     {
         if(!root) return NULL;
         
-        pruneTree(root->left);
-        pruneTree(root->right);
-        
-        if(!checkone(root->left)) root->left=NULL;
-        if(!checkone(root->right)) root->right=NULL;
+        root->left  = pruneTree(root->left);
+        root->right = pruneTree(root->right);
         
         if(!root->left && !root->right && root->val == 0)
             return NULL;
