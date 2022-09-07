@@ -33,3 +33,37 @@ public:
         return s;
     }
 };
+
+
+//best 
+
+// class Solution {
+// public:
+//     string s;
+//     void con(TreeNode* root,string &s)
+//     {
+//         if(root==NULL)return;
+//         s+=to_string(root->val);
+//         if(!root->left && !root->right)
+//         {
+//             return;
+//         }
+//         s+='(';
+//         con(root->left,s);
+//         s+=')';
+//         if(root->right)
+//         {
+//              s+='(';
+//         con(root->right,s);
+//         s+=')';
+         
+//         }
+        
+        
+//     }
+//     string tree2str(TreeNode* root) {
+//         string s="";
+//         con(root,s);
+//         return s;
+//     }
+// };
