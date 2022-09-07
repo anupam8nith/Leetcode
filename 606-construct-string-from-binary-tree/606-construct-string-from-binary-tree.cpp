@@ -11,12 +11,6 @@
  */
 class Solution {
 public:
-    void create(TreeNode* root, string &s)
-    {
-        
-    }
-    
-    
     
     string tree2str(TreeNode* root) 
     {
@@ -35,10 +29,7 @@ public:
         // right
             if(root->right!=NULL)
              s += '(' + tree2str(root->right) + ')';
-            
-        
-            
-            
+             
         return s;
     }
 };
