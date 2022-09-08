@@ -7,11 +7,11 @@ public:
             return n;
         
         int count=0;
-        
+        unordered_map<double,int> um;
         //diagonal points
         for(int i=0;i<n-1;i++)
         {
-            unordered_map<double,int> um;
+            
             for(int j=i+1;j<n;j++)
             {
                     double dx = points[j][0] - points[i][0];
@@ -21,11 +21,10 @@ public:
                     {
                         um[(double)dy/dx]++;
                         count=max(count,um[(double)dy/dx]+1);
-                    }
-                    
-                        
-                
+                    } 
             }
+            
+             um.clear();
         }
         
         //x && y elements
