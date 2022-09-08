@@ -38,8 +38,6 @@ public:
             count = max(count, umx[p[0]]);
             count = max(count, umy[p[1]]);
         }
-        umx.clear();
-        umy.clear();
         
         return count;
     }
