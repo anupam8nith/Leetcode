@@ -14,33 +14,64 @@ public:
         
     vector<int> inorderTraversal(TreeNode* root) 
     {
-      //iterative approach
+        //iterative approach
+        vector<int> ans;
         
-        vector<int> vi;
-        if(root==NULL) return vi;
+        if(root==NULL) return ans;
         
-        stack<TreeNode*> st;
-        while(root!=NULL || st.empty()!=true)
-        {
-            if(root!=NULL)
+        stack<TreeNode *> st;
+            
+            while(root!= NULL || st.empty()!=1)
             {
-                st.push(root);
-                root=root->left;
-            }
-            else
-            {
-                root=st.top();
-                st.pop();
                 
-                vi.push_back(root->val);
-                root=root->right;
+                if(root!=NULL) 
+                {
+                    st.push(root);
+                    root=root->left;
+                }
+                else
+                {
+                    root=st.top();
+                    st.pop();
+                    
+                    ans.push_back(root->val);
+                    root=root->right;
+                }
+               
             }
-
-        }
         
-        return vi;
+     return ans;
+        
     }
 };
+
+ //iterative approach
+        
+//         vector<int> vi;
+//         if(root==NULL) return vi;
+        
+//         stack<TreeNode*> st;
+//         while(root!=NULL || st.empty()!=true)
+//         {
+//             if(root!=NULL)
+//             {
+//                 st.push(root);
+//                 root=root->left;
+//             }
+//             else
+//             {
+//                 root=st.top();
+//                 st.pop();
+                
+//                 vi.push_back(root->val);
+//                 root=root->right;
+//             }
+
+//         }
+        
+//         return vi;
+
+
 
 //recursive
 
