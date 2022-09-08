@@ -4,8 +4,10 @@ public:
     
     int minimumLines(vector<vector<int>>& stockPrices) 
     {
-        int n = stockPrices.size();
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         
+        int n = stockPrices.size();
         if(n<=1)
             return 0;
         int count=1;
