@@ -1,34 +1,68 @@
+//best solution
+
+class Solution {
+public:
+  int numberOfWeakCharacters(vector<vector<int>>& properties) {
+    int maxAttack = 0;
+    for (const auto& p : properties) {
+      maxAttack = max(maxAttack, p[0]);
+    }
+    
+    vector<int> maxDefenses (maxAttack + 2);
+    for (const auto& p : properties) {
+      int attack = p[0];
+      int defense = p[1];
+      maxDefenses[attack] = max(maxDefenses[attack], defense);
+    }
+    
+    for (int i = maxDefenses.size() - 2; i >= 0; i--) {
+      maxDefenses[i] = max(maxDefenses[i], maxDefenses[i+1]);
+    }
+    
+    int weak = 0;
+    for (const auto& p : properties) {
+      int attack = p[0];
+      int defense = p[1];
+      if (maxDefenses[attack + 1] > defense)
+        weak++;
+    }
+    
+    return weak;
+  }
+};
+
+
 /*
 this is the comparator class function which sort Attacks in Ascending order and if attacks are duplicate then the 
 character having lower defense value will be on upper than the greater like [[10,20 ][10,21]];
 */
 
-bool accToSecond(vector<int>&first, vector<int> &second) {
-	if (first[0] == second[0]) return first[1] < second[1];
-	return first[0] > second[0];
-}
-class Solution {
-public:
-    int numberOfWeakCharacters(vector<vector<int>>& properties) {
-	sort(properties.begin(), properties.end(), accToSecond);
-	stack<int> st;
-	st.push(properties[0][1]);
-	int n = properties.size();
-	int ct = 0;
-	for (int i = 1; i < n; i++) {
-		int second =  properties[i][1];
-		if (st.top() > second) ct++;
-		if (st.top() < second) {
-			/*as we handle the cases for the attacks now if anywhere defense is greater than
-			the defense value at the top of stack which means we have new stronger character so we remove the previous one and
-			push the new stronger one this makes the stack - Monotonic (i.e., top is stronger as much as it can )*/
-			st.pop();
-			st.push(second);//pushing the new character
-		}
-	}
-	return ct;
-    }
-}; 
+// bool accToSecond(vector<int>&first, vector<int> &second) {
+// 	if (first[0] == second[0]) return first[1] < second[1];
+// 	return first[0] > second[0];
+// }
+// class Solution {
+// public:
+//     int numberOfWeakCharacters(vector<vector<int>>& properties) {
+// 	sort(properties.begin(), properties.end(), accToSecond);
+// 	stack<int> st;
+// 	st.push(properties[0][1]);
+// 	int n = properties.size();
+// 	int ct = 0;
+// 	for (int i = 1; i < n; i++) {
+// 		int second =  properties[i][1];
+// 		if (st.top() > second) ct++;
+// 		if (st.top() < second) {
+// 			/*as we handle the cases for the attacks now if anywhere defense is greater than
+// 			the defense value at the top of stack which means we have new stronger character so we remove the previous one and
+// 			push the new stronger one this makes the stack - Monotonic (i.e., top is stronger as much as it can )*/
+// 			st.pop();
+// 			st.push(second);//pushing the new character
+// 		}
+// 	}
+// 	return ct;
+//     }
+// }; 
 
 
             //TLE but working bruteforce code
