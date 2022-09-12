@@ -2,6 +2,10 @@ class Solution {
 public:
     int bagOfTokensScore(vector<int>& token, int power) 
     {
+        
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         int score=0;
         int n = token.size();
         
