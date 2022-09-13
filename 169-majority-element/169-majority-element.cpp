@@ -1,6 +1,10 @@
 class Solution {
 public:
-    int majorityElement(vector<int>& nums) {
+    int majorityElement(vector<int>& nums) 
+    {        
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        
           int n=nums.size();
         int vote =0,leader=0;
         for(int i=0;i<n;i++)
@@ -19,8 +23,8 @@ public:
 // public:
 //     int majorityElement(vector<int>& nums) 
 //     {
-//         ios_base::sync_with_stdio(false);
-//     cin.tie(nullptr);
+    //     ios_base::sync_with_stdio(false);
+    // cin.tie(nullptr);
         
 //       unordered_map<int,int> um;
         
