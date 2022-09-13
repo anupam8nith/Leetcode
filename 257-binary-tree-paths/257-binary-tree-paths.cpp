@@ -38,8 +38,8 @@ public:
     {
         vector<string> s;
         if(root==NULL) return s;
+        
         string str ;
-            // str+= to_string(root->val) + "->";
         add(root,s,str);
         
         
