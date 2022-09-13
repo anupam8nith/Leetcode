@@ -2,6 +2,9 @@ class Solution {
 public:
     int majorityElement(vector<int>& nums) 
     {
+        ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+        
       unordered_map<int,int> um;
         
         int n= nums.size();
