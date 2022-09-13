@@ -3,8 +3,8 @@ public:
     vector<int> majorityElement(vector<int>& nums) 
     {
        
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+//     ios_base::sync_with_stdio(false);
+//     cin.tie(nullptr);
     
         vector<int> ans;
         
