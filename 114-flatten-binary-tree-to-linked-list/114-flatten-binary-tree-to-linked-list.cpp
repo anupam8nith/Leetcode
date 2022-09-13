@@ -11,36 +11,64 @@
  */
 class Solution {
 public:
-    void preorder(TreeNode* root, vector<TreeNode*> &pre)
-    {
-        if(root==NULL)
-            return;
-        
-        pre.push_back(root);
-        
-        preorder(root->left,pre);
-        preorder(root->right,pre);
-    }
-    
-    void flatten(TreeNode* root) 
-    {
-        if(root==NULL) return;
-        
-        vector<TreeNode*> pre;
-        
-        preorder(root,pre);
-        
-        for(int i=0;i<=pre.size()-1;i++)
+    void flatten(TreeNode* root) {
+        if( root )
         {
-            if(i!=pre.size()-1)
+            /*Move the left node to the right node*/
+            TreeNode* temp = root->right;
+            root->right = root->left;
+            root->left = nullptr;
+            TreeNode* node = root;
+            
+            /*Move to the end of the prev left node which is the new right node*/
+            while( node->right )
             {
-                pre[i]->right=pre[i+1];
-                pre[i]->left=NULL;
+                node = node->right;
             }
-            else
-                pre[i]->right=NULL;
-                pre[i]->left=NULL;
-        }
-        
+            
+            /*Append the right node to its end*/
+            node->right = temp;
+            flatten( root->right ); 
+        } 
+        return;
+               
     }
 };
+
+//My solution: O(n), O(n); not good
+
+// class Solution {
+// public:
+//     void preorder(TreeNode* root, vector<TreeNode*> &pre)
+//     {
+//         if(root==NULL)
+//             return;
+        
+//         pre.push_back(root);
+        
+//         preorder(root->left,pre);
+//         preorder(root->right,pre);
+//     }
+    
+//     void flatten(TreeNode* root) 
+//     {
+//         if(root==NULL) return;
+        
+//         vector<TreeNode*> pre;
+        
+//         preorder(root,pre);
+        
+//         for(int i=0;i<=pre.size()-1;i++)
+//         {
+//             if(i!=pre.size()-1)
+//             {
+//                 pre[i]->right=pre[i+1];
+//                 pre[i]->left=NULL;
+//             }
+//             else
+//                 pre[i]->right=NULL;
+//                 pre[i]->left=NULL;
+//         }
+        
+//     }
+// };
