@@ -22,8 +22,8 @@ public:
             {
                 if(idxa>idxb)
                 return false;
-                // else
-                // return true;
+                else
+                return true;
             }
             if(low<n)
             low++;
@@ -33,9 +33,6 @@ public:
         
         if(idxa==-1 || idxb==-1)
             return true;
-        
-        if(idxa>idxb)
-        return false;
         
      return true;   
     }
