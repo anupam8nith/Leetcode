@@ -2,6 +2,10 @@ class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        
         int sz = size(nums);
         vector<int> n,p;
         
