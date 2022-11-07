@@ -15,46 +15,31 @@ public:
         int count=0;
         ListNode *p=head,*newhead=NULL,*end=NULL;
         
-        
-        
         while(p!=NULL)
         {
             count++;
             p=p->next;
         }
-        // cout<<count<<endl; //1.
+
         if(count<=1 || k==0 || k%count==0)
             return head;
         
         int i=0;
         p=head;
         
-        // cout<<p->val<<endl;
-        
-    
         while(i!=count - k%count -1)
         {
         p=p->next;
         i++;
         }
-    // else
-    // {
-    //     while(i!=count - k%count -1)
-    //     {
-    //     p=p->next;
-    //     i++;
-    //     }
-    // }
     
         newhead=p->next;
-        
-        // cout<<newhead->val<<endl; //2.
+    
         end=p;
         
         while(p->next!=NULL && p!=NULL)
             p=p->next;
         
-        cout<<p->val<<endl;
         
         p->next=head;
         end->next=NULL;
