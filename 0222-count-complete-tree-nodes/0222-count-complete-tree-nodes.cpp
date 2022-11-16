@@ -31,7 +31,7 @@ public:
         while (left = left->left)   ++l; 
         while (right = right->right) ++r; 
         
-        if (l == r) return pow(2,l)-1;
+        if (l == r) return (1<<l)-1;
         
         return 1 + countNodes(root->left) + countNodes(root->right);
     }
