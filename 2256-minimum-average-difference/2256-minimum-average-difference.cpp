@@ -44,3 +44,30 @@ public:
         
     }
 };
+
+
+// best soln
+
+// class Solution {
+// public:
+//   int minimumAverageDifference(vector<int> &nums) {
+//     ios_base::sync_with_stdio(false);
+//     cin.tie(NULL);
+//     long min = 10000000, lsum = 0, usum = 0;
+//     int midx = 0, l = nums.size();
+//     for (int i = 0; i < l; i++)
+//       usum += nums[i];
+//     for (int i = 0; i < l; i++) {
+//       lsum += nums[i];
+//       usum -= nums[i];
+//       int lv = abs((lsum / (i + 1)) - (usum ? (usum / (l - i - 1)) : 0));
+//       if(lv==0) return i;
+//       if (min > lv) {
+//         min = lv;
+//         midx = i;
+//       }
+//     }
+
+//     return midx;
+//   }
+// };
