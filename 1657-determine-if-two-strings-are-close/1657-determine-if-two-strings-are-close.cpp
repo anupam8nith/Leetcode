@@ -2,7 +2,6 @@ class Solution {
 public:
     bool closeStrings(string word1, string word2) 
     {
-        int wdiff=0,fdiff=0;
         
         if(word1.size()!=word2.size())
             return false;
@@ -17,6 +16,9 @@ public:
         for(auto ch: word2)
             um2[ch]++;
         
+         if(um1.size()!= um2.size())
+            return false;
+        
         if(um1==um2)
             return true;
         else
@@ -28,8 +30,6 @@ public:
             for(auto ch: um2)
                 if(um1[ch.first]==0)
                     return false;
-            
-            
             
             vector<int> v1, v2;
             
