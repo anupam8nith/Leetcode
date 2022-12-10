@@ -2,6 +2,11 @@ class Solution {
 public:
     int minimumAverageDifference(vector<int>& nums) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        
+        
         int ans = INT_MAX, n = nums.size();
         
         int idx=-1;
