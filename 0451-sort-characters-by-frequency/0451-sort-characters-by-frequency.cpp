@@ -14,9 +14,10 @@ public:
         for(auto ch: um)
         v.push_back({ch.second,ch.first});
         
-        sort(v.begin(),v.end(), [](auto a, auto b) {
-    return a.first > b.first || (a.first == b.first && a.second < b.second);
-  });
+        sort( v.begin(),v.end(), 
+             [](auto a, auto b)
+             {return a.first > b.first || (a.first == b.first && a.second > b.second);}
+            );
         
         for(auto ch: v)
         {
