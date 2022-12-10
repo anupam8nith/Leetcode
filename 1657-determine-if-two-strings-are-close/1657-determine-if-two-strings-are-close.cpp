@@ -2,6 +2,8 @@ class Solution {
 public:
     bool closeStrings(string word1, string word2) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         
         if(word1.size()!=word2.size())
             return false;
