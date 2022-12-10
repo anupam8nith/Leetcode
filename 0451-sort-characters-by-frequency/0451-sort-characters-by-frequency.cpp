@@ -16,7 +16,7 @@ public:
         
         sort( v.begin(),v.end(), 
              [](auto a, auto b)
-             {return a.first > b.first || (a.first == b.first && a.second > b.second);}
+             {return a.first > b.first || (a.first==b.first && a.second < b.second);}
             );
         
         for(auto ch: v)
