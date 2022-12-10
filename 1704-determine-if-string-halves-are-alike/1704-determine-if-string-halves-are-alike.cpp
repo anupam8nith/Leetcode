@@ -17,8 +17,6 @@ public:
             if(s[i]==97 || s[i]==101 || s[i]==105 || s[i]==111 || s[i]==117)
                 b++;
         }
-       
-        cout<<a<<" "<<b<<endl;
         
         if(a==b)
         return true;
