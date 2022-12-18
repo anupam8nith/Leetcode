@@ -20,8 +20,8 @@ public:
     
     int findMinFibonacciNumbers(int k) 
     {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
+        // ios_base::sync_with_stdio(false);
+        // cin.tie(NULL);
         
         //find the nearest fib number
         v.resize(45,0);
