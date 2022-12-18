@@ -3,6 +3,9 @@ public:
     
     int minimumRounds(vector<int>& tasks) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         map<int,int> um;
         
        for(auto t: tasks)
