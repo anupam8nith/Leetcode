@@ -10,8 +10,13 @@
  */
 class Solution {
 public:
-    bool isPalindrome(ListNode* head) 
+    bool isPalindrome(ListNode* head)
     {
+        
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        cout.tie(0);
+        
         ListNode* p=head;
         string s="";
         
