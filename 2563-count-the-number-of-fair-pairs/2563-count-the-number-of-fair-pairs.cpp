@@ -13,17 +13,8 @@ public:
             
             auto lptr = lower_bound(nums.begin()+i+1,nums.end(),low);
             auto hptr = upper_bound(nums.begin()+i+1,nums.end(),high);
-            
-//             if(nums[i]+*hptr>upper)
-//                 hptr--;
-//             if(nums[i]+*lptr<lower)
-//                 lptr++;
-            
-            
-                // cout<<nums[i]<<" "<<*lptr<<" "<<*hptr<<endl;
                 
-                
-                count+= hptr-lptr;
+            count+= hptr-lptr;
             
         }
         
