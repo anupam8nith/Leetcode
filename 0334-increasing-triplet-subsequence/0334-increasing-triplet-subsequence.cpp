@@ -26,3 +26,19 @@ public:
         
     }
 };
+
+
+//
+// vector<int> dp;
+// for (auto n : nums)
+// {
+//     auto iter = lower_bound(begin(dp), end(dp), n);
+//     if (iter == end(dp))
+//     {
+//         dp.push_back(n);
+//         continue;
+//     }
+//     if (*iter > n)
+//         *iter = n;
+// }
+// return dp.size();
