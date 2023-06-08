@@ -11,3 +11,31 @@ public:
         return true;
     }
 };
+
+// class Solution {
+// public:
+//   bool canMakeArithmeticProgression(std::vector<int>& arr) {
+//     int m = *std::min_element(arr.begin(), arr.end());
+//     int gap = (int)((std::max_element(arr.begin(), arr.end()) - m) / (arr.size() - 1));
+//     if (gap == 0) {
+//       return true;
+//     }
+//     int i = 0;
+//     while (i < arr.size()) {
+//       if (arr[i] == m + i * gap) {
+//         i++;
+//       } else {
+//         int dis = arr[i] - m;
+//         if (dis % gap != 0) {
+//           return false;
+//         }
+//         int pos = dis / gap;
+//         if (arr[pos] == arr[i]) {
+//           return false;
+//         }
+//         std::swap(arr[pos], arr[i]);
+//       }
+//     }
+//     return true;
+//   }
+// };
