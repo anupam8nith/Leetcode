@@ -10,14 +10,15 @@ public:
             }
         }
         
-        int ans = v[n - 1];
+        int ans = 0;
         
         for (int i = n - 2; i >= 0; i--) {
             if (r[i] > r[i + 1] && v[i] <= v[i + 1]) {
                 v[i] = v[i + 1] + 1;
             }
-            ans += v[i];
         }
+        
+        for(auto it: v)ans+=it;
         
         return ans;
     }
