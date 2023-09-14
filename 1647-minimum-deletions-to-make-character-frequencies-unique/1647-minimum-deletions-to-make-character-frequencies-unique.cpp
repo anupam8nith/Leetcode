@@ -1,14 +1,29 @@
 class Solution {
 public:
-    int minDeletions(string s) {
-    int cnt[26] = {}, res = 0;
-    for (char ch : s)
-        ++cnt[ch - 'a'];
-    sort(begin(cnt), end(cnt));
-    for (int i = 24; i >= 0 && cnt[i] > 0; --i) {
-        res += max(0, cnt[i] - max(0, cnt[i + 1] - 1));
-        cnt[i] = min(cnt[i], max(0, cnt[i + 1] - 1));
+    int minDeletions(string s) 
+    {
+        unordered_map<char,int> um;
+        int ans=0;
+        
+        for(auto it: s) um[it]++;
+        
+        unordered_set<int> used_freq;
+        
+        for(auto it: um)
+        {
+            int f = it.second;
+            
+            while(used_freq.count(f)>0)
+            {
+                f--;
+                ans++;
+            }
+            
+            if(f>0)used_freq.insert(f);
+        }
+        
+        
+        
+         return ans; 
     }
-    return res;
-}
 };
