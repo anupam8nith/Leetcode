@@ -2,6 +2,8 @@ class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) 
     {
+        std::ios::sync_with_stdio(0); std::cin.tie(0);
+        
         int m = size(nums);
         
         //replace non needed numbers with zero
