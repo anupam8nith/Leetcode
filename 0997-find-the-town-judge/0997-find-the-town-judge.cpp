@@ -2,8 +2,8 @@ class Solution {
 public:
     int findJudge(int n, vector<vector<int>>& trust) 
     {
-        ios::sync_with_stdio(false);
-        cin.tie(0);
+        // ios::sync_with_stdio(false);
+        // cin.tie(0);
         
         vector<vector<int>> adj(n+1);
         
