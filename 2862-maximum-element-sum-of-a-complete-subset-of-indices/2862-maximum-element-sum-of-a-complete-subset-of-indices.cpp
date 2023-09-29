@@ -2,6 +2,9 @@ class Solution {
 public:
     long long maximumSum(vector<int>& nums) 
     {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+        
         long long ans = 0;
         
         for (int key = 1; key <= nums.size(); key++)
