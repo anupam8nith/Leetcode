@@ -1,29 +1,14 @@
-class Solution 
-{
+class Solution {
 public:
-    string reverseWords(string s) 
-    {
-        std::ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-        
-        int n = s.size();
-        
-        for(int i=0;i<n;i++)
-        {
-            if(s[i]!=' ')
-            {
-            int start=i; string temp="";
-                
-            while(s[start]!=' ' && start<n) temp+=s[start++];
-            
-                // cout<<temp<<endl;
-                
-            reverse(temp.begin(),temp.end());
-                
-            for(int j=i;j<start;j++)s[j]=temp[j-i];
-            i = start;
-                
+    string reverseWords(string s) {
+       int l=0,r=0;
+        while(l<s.length()){
+            while(r<s.length() && s[r]!=' '){
+                r++;
             }
+            reverse(s.begin()+l,s.begin()+r);
+            l=r+1;
+            r=l;
         }
         return s;
     }
