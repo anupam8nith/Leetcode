@@ -2,6 +2,9 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
+        ios::sync_with_stdio(false);
+        cin.tie(0);
+        
         int n = nums.size();
         
         unordered_map<int,int> um;
