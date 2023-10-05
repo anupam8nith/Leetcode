@@ -12,6 +12,9 @@ public:
     
     bool validPath(int n, vector<vector<int>>& edges, int source, int destination) 
     {
+        ios::sync_with_stdio(false);
+        cin.tie(NULL);cout.tie(NULL);
+        
         if(source==destination || n==1) return true;
         
         unordered_map<int,vector<int>> adj;
