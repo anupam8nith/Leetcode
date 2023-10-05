@@ -1,33 +1,27 @@
 class Solution {
 public:
-    int singleNonDuplicate(vector<int>& nums) 
-    {
-        if(nums.size()==1)
-            return nums[0];
-        
-        if(nums[0]!=nums[1])
-        return nums[0];
-        
-        if(nums[nums.size()-1]!=nums[nums.size()-2])
-            return nums[nums.size()-1];
-        
-        for(int i=1;i<nums.size()-1;i++)
-        if(nums[i-1]!=nums[i] && nums[i+1]!=nums[i])
-                return nums[i];
-        
-        return 0;
+    int bsearch(int l, int r, vector<int>& nums) {
+        while (l < r) 
+        {
+            int mid = l + (r - l) / 2;
+
+            if (mid % 2 == 0) 
+            {  
+                if (nums[mid] == nums[mid + 1]) l = mid + 2;
+                else r = mid;
+            } 
+            else 
+            { 
+                if (nums[mid] == nums[mid - 1]) l = mid + 1;
+                else r = mid;
+            }
+        }
+
+        return nums[l];
+    }
+
+    int singleNonDuplicate(vector<int>& nums) {
+        int l = 0, r = nums.size() - 1;
+        return bsearch(l, r, nums);
     }
 };
-
-// best solution 
-
-// class Solution {
-// public:
-//     int singleNonDuplicate(vector<int>& nums) {
-        
-//         int ans = 0;
-//         for(auto it : nums)
-//             ans ^= it;
-//         return ans;
-//     }
-// };
