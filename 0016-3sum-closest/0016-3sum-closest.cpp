@@ -3,8 +3,8 @@ class Solution
 public:
     int threeSumClosest(vector<int>& nums, int target) 
     {
-        ios_base::sync_with_stdio(false);
-        cin.tie(0);
+        // ios_base::sync_with_stdio(false);
+        // cin.tie(0);
         int n =nums.size();
         sort(nums.begin(),nums.end());
         
