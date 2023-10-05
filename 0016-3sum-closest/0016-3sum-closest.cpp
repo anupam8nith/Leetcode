@@ -7,7 +7,14 @@ public:
         cin.tie(0);
         cout.tie(0);
         int n =nums.size();
-        sort(nums.begin(),nums.end());
+        if(nums.size() == 3) return nums[0] + nums[1] + nums[2];
+        sort(nums.begin(), nums.end());
+        
+        int res = nums[0] + nums[1] + nums[2];
+        
+        if(target <= res)return res;
+        
+        if(nums[n-1] + nums[n-2] + nums[n-3] <= target) return nums[n-1] + nums[n-2] + nums[n-3];
         
         vector<pair<int,int>> ans;
         
@@ -17,22 +24,15 @@ public:
             
             while(j<k)
             {
-                int sum = nums[i] + nums[j] + nums[k],diff= abs(target-sum);
-                if(diff==0) return sum;
-                else if(sum<target)
-                {
-                    ans.push_back({diff,sum});
-                    j++;
-                }
-                else
-                {
-                    ans.push_back({diff,sum});
-                    k--;
-                }
+                int sum = nums[i] + nums[j] + nums[k];
+                
+                if(abs(sum-target) < abs(res-target)) res = sum;
+                
+                if(sum < target)j++;
+                else k--;
             }
         }
-        sort(ans.begin(),ans.end());
         
-        return ans[0].second;
+        return res;
     }
 };
