@@ -2,7 +2,6 @@ class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target) 
     {
-        cin.tie(0);cout.tie(0);
       
         int n =nums.size();
         sort(nums.begin(),nums.end());
