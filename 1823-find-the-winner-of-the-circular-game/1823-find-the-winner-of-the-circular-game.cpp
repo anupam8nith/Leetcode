@@ -1,18 +1,19 @@
 class Solution {
 public:
-    int findTheWinner(int n, int k) {
-        vector<int> s(n);
+    int findTheWinner(int n, int k) 
+    {
+        cin.tie(0);cout.tie(0);
+        
+        set<int> s;int idx=0;
 
-        // Initialize vector
-        iota(s.begin(), s.end(), 1);
+        for (int i = 1; i <= n; i++) s.insert(i);
 
-        int idx = 0;
-
-        while (s.size() > 1) {
+        while (s.size() > 1) 
+        {
             idx = (idx + k - 1) % s.size();
-            s.erase(s.begin() + idx);
+            auto it = s.begin();advance(it,idx);
+            it = s.erase(it);
         }
-
-        return s.front();
+        return *s.begin();
     }
 };
