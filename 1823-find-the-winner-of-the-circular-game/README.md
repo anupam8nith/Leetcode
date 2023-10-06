@@ -15,7 +15,7 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/03/25/ic234-q2-ex11.png" style="width: 500px; height: 345px;">
-<pre><strong>Input:</strong> n = 5, k = 2
+<pre style="position: relative;"><strong>Input:</strong> n = 5, k = 2
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> Here are the steps of the game:
 1) Start at friend 1.
@@ -26,14 +26,14 @@
 6) Count 2 friends clockwise, which are friends 5 and 1.
 7) Friend 1 leaves the circle. Next start is friend 3.
 8) Count 2 friends clockwise, which are friends 3 and 5.
-9) Friend 5 leaves the circle. Only friend 3 is left, so they are the winner.</pre>
+9) Friend 5 leaves the circle. Only friend 3 is left, so they are the winner.<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> n = 6, k = 5
+<pre style="position: relative;"><strong>Input:</strong> n = 6, k = 5
 <strong>Output:</strong> 1
 <strong>Explanation:</strong> The friends leave in this order: 5, 4, 6, 2, 3. The winner is friend 1.
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
