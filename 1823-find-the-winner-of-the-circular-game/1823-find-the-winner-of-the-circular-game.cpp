@@ -2,7 +2,6 @@ class Solution {
 public:
     int findTheWinner(int n, int k) 
     {
-        cin.tie(0);cout.tie(0);
         
         set<int> s;int idx=0;
 
