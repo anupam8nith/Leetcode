@@ -20,7 +20,7 @@ void findall(vector<vector<int>>&ans, vector<int> &candidates, vector<int> currV
 
     vector<vector<int>> combinationSum(vector<int>& candidates, int target)
     {
-        ios_base::sync_with_stdio(false);
+        // ios_base::sync_with_stdio(false);
         cin.tie(0);cout.tie(0);
         
         int n = candidates.size(); vector<vector<int>>ans;
