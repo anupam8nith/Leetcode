@@ -24,7 +24,6 @@ void findall(vector<vector<int>>&ans, vector<int> &candidates, vector<int> currV
         cin.tie(0);cout.tie(0);
         
         int n = candidates.size(); vector<vector<int>>ans;
-        sort(candidates.begin(), candidates.end());
 
         long long sum = 0;
         vector<int> currVec;
