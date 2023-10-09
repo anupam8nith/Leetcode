@@ -2,6 +2,7 @@ class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target)
     {
+        cin.tie(0);
         int idxstart=-1, idxend=-1;
         
         if(binary_search(nums.begin(),nums.end(),target))
