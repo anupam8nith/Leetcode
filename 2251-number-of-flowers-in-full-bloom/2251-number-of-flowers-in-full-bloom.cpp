@@ -19,10 +19,10 @@ public:
         
         vector<int>ans;
         
-        for (int t : people) 
+        for (int time : people) 
         {
-            int started = upper_bound(start.begin(), start.end(), t) - start.begin();
-            int ended = lower_bound(end.begin(), end.end(), t) - end.begin();
+            int started = upper_bound(start.begin(), start.end(), time) - start.begin();
+            int ended = lower_bound(end.begin(), end.end(), time) - end.begin();
             ans.push_back(started - ended);
         }
         return ans;
