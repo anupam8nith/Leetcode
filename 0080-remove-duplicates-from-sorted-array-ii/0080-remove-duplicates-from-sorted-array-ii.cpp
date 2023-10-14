@@ -3,10 +3,10 @@ public:
     int removeDuplicates(vector<int>& nums) 
     {
         int i =0;
-        for(auto ele : nums)
-            if(i==0 || i==1 || nums[i-2] != ele)
+        for(auto val : nums)
+            if(i==0 || i==1 || nums[i-2] != val)
             {
-                nums[i] = ele;
+                nums[i] = val;
                 i++;
             }
     return i ;
