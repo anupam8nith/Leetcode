@@ -13,6 +13,8 @@ class Solution {
 public:
     vector<int> largestValues(TreeNode* root) 
     {
+        cin.tie(0);
+        
         if(root==NULL) return {};
         
         vector<int> ans;
