@@ -2,6 +2,9 @@ class Solution {
 public:
     int numFactoredBinaryTrees(vector<int> &arr) 
     {
+        cin.tie(0);
+        cout.tie(0);
+        
         sort(arr.begin(), arr.end());
         int n = arr.size();long long int ans=0;
 
