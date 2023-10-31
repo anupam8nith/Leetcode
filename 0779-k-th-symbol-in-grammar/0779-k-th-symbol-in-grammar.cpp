@@ -8,9 +8,9 @@ public:
         
         while(n!=1)
         {
-            n=n>>1;
+            n=n>>1;  // n/=2;
             
-            if(k>n)
+            if(k>n) 
             {
                 k-=n;
                 isSame=!isSame;
