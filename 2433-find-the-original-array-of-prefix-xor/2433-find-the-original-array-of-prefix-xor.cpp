@@ -1,5 +1,11 @@
 class Solution {
 public:
+    Solution() 
+    {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+    }
     vector<int> findArray(vector<int>& pref) 
     {
         for (int i = pref.size() - 1; i > 0; --i)
