@@ -13,10 +13,11 @@ class Solution {
 public:
     map<int, int> um;
 
-    void traverse(TreeNode* root) {
+    void traverse(TreeNode* root) 
+    {
         if (root == nullptr) return;
         um[root->val]++;
-        traverse(root->left);  // Fixed the condition for left and right subtrees
+        traverse(root->left);
         traverse(root->right);
     }
 
@@ -27,11 +28,14 @@ public:
         traverse(root);
 
         // Changed the loop to iterate over the map and extract keys and values
-        for (auto it = um.begin(); it != um.end(); ++it) {
-            if (ans.empty() || it->second > um[ans.back()]) {
+        for (auto it = um.begin(); it != um.end(); ++it) 
+        {
+            if (ans.empty() || it->second > um[ans.back()]) 
+            {
                 ans.clear();
                 ans.push_back(it->first);
-            } else if (it->second == um[ans.back()]) {
+            } else if (it->second == um[ans.back()]) 
+            {
                 ans.push_back(it->first);
             }
         }
