@@ -2,6 +2,8 @@ class Solution {
 public:
     int getWinner(vector<int>& arr, int k) 
     {
+        cin.tie(0);
+        
         int n = arr.size();
         if(k>=n-1) return *max_element(arr.begin(),arr.end());
         
