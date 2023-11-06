@@ -2,11 +2,11 @@ class SeatManager
 {
 private:
     priority_queue<int, vector<int>, greater<int>> pq;
-    int num;
+    int seatNo;
 public:
     SeatManager(int n) 
     {
-        num = 1;
+        seatNo = 1;
     }
     
     int reserve() 
@@ -17,7 +17,7 @@ public:
             pq.pop();
             return seat;
         }
-        return num++;
+        return seatNo++;
     }
     
     void unreserve(int seatNumber) 
