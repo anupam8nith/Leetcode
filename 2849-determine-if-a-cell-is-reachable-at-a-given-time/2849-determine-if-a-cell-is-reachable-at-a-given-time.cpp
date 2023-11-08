@@ -2,7 +2,9 @@ class Solution {
 public:
     bool isReachableAtTime(int sx, int sy, int fx, int fy, int t) 
     {
-        int delx= abs(sx-fx);
+        
+        
+      int delx= abs(sx-fx);
         int dely= abs(sy-fy);
         
         if(delx==0 && dely==0)
@@ -12,8 +14,5 @@ public:
             return true;
         
         return false;
-        
     }
 };
-
-//hoiii thoiiss is teooiissting
