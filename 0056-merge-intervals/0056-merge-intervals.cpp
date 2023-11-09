@@ -2,28 +2,58 @@ class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) 
     {
-        set<pair<int, int>> sp;
         vector<vector<int>> ans;
-
-        for (auto it : intervals) sp.insert({it[0], it[1]});
-
-        auto current_interval = *sp.begin();
-
-        for (auto it = sp.begin(); it != sp.end(); ++it)
+        if(intervals.size()==0)return ans;     
+        
+        sort(intervals.begin(), intervals.end(),[](vector<int> &a, vector<int> &b)
+             {
+            return a[0] < b[0];   // comparing according to 1st element
+            });
+        
+        vector<int> curr=intervals[0];
+        
+        for(int i=1;i<intervals.size();i++)
         {
-            if (it->first > current_interval.second)
+            if(curr[1]<intervals[i][0])
             {
-                ans.push_back({current_interval.first, current_interval.second});
-                current_interval = *it;
+                ans.push_back(curr);
+                curr=intervals[i];
             }
-            else current_interval.second = max(current_interval.second, it->second);
+            else curr[1]=max(curr[1], intervals[i][1]);
         }
-
-        ans.push_back({current_interval.first, current_interval.second});
-
+        
+        ans.push_back(curr);
         return ans;
     }
 };
+
+
+// class Solution {
+// public:
+//     vector<vector<int>> merge(vector<vector<int>>& intervals) 
+//     {
+//         set<pair<int, int>> sp;
+//         vector<vector<int>> ans;
+
+//         for (auto it : intervals) sp.insert({it[0], it[1]});
+
+//         auto current_interval = *sp.begin();
+
+//         for (auto it = sp.begin(); it != sp.end(); ++it)
+//         {
+//             if (it->first > current_interval.second)
+//             {
+//                 ans.push_back({current_interval.first, current_interval.second});
+//                 current_interval = *it;
+//             }
+//             else current_interval.second = max(current_interval.second, it->second);
+//         }
+
+//         ans.push_back({current_interval.first, current_interval.second});
+
+//         return ans;
+//     }
+// };
 
 
 // class Solution {
