@@ -2,6 +2,9 @@ class Solution {
 public:
     int countHomogenous(string s) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
         long long a = 0;
         int j =0;
         long long r= 0;
