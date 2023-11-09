@@ -16,10 +16,7 @@ public:
                 ans.push_back({current_interval.first, current_interval.second});
                 current_interval = *it;
             }
-            else
-            {
-                current_interval.second = max(current_interval.second, it->second);
-            }
+            else current_interval.second = max(current_interval.second, it->second);
         }
 
         ans.push_back({current_interval.first, current_interval.second});
