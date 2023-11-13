@@ -14,7 +14,8 @@ public:
         
         sort(vowels.begin(),vowels.end());
         
-        for (int j = 0; j < pos.size(); j++) ans[pos[j]] = vowels[j];
+        int j=0;
+        for(int i: pos)ans[i]=vowels[j++];
         
         return ans;
     }
