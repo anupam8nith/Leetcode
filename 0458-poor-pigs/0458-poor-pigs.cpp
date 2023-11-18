@@ -1,6 +1,13 @@
 class Solution {
 public:
-    int poorPigs(int buckets, int timeDetect, int timeTest) {
-        return ceil(log2(buckets)/log2(int(timeTest/timeDetect)+1));
+    int poorPigs(int buckets, int minutesToDie, int minutesToTest) 
+    {
+       
+        int trials = (minutesToTest/minutesToDie);
+        int pigs = 0;
+        while(pow(trials+1,pigs) < buckets){
+            pigs++;
+        }
+        return pigs;
     }
 };
