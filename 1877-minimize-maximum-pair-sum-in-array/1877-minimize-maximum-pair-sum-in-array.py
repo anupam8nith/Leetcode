@@ -1,10 +1,4 @@
 class Solution(object):
     def minPairSum(self, nums):
-        nums.sort()
-        n = len(nums)
-        ans = float('-inf')
-        
-        for i in range(n // 2):
-            ans = max(nums[i] + nums[n - 1 - i], ans)
-            
-        return ans
+        x = sorted(nums)
+        return  max(x[-i-1] + x[i] for i in range(len(x)/2))
