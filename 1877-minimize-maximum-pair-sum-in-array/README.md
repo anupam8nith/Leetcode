@@ -16,19 +16,19 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> nums = [3,5,2,3]
+<pre style="position: relative;"><strong>Input:</strong> nums = [3,5,2,3]
 <strong>Output:</strong> 7
 <strong>Explanation:</strong> The elements can be paired up into pairs (3,3) and (5,2).
 The maximum pair sum is max(3+3, 5+2) = max(6, 7) = 7.
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> nums = [3,5,4,2,4,6]
+<pre style="position: relative;"><strong>Input:</strong> nums = [3,5,4,2,4,6]
 <strong>Output:</strong> 8
 <strong>Explanation:</strong> The elements can be paired up into pairs (3,5), (4,4), and (6,2).
 The maximum pair sum is max(3+5, 4+4, 6+2) = max(8, 8, 8) = 8.
-</pre>
+<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
