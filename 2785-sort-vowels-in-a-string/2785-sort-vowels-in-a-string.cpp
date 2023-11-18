@@ -1,22 +1,48 @@
 class Solution {
 public:
-    string sortVowels(string s) 
-    {
-        string ans = s, vowels=""; vector<int> pos;
-        
-        for(int i=0;i<s.size();i++) 
-        {
-            auto c= s[i];
-            auto isLowercaseVowel = (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
-            auto isUppercaseVowel = (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
-            if(isLowercaseVowel || isUppercaseVowel) {pos.push_back(i); vowels+=c;}
+    string sortVowels(string s) {
+        vector<int> lower(26,0);
+        vector<int> upper(26,0);
+        string ans;
+
+        for(int i=0; i<s.size(); i++){
+            if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'){
+                lower[s[i] - 'a']++;
+                s[i] = '#';
+            }
+            else if(s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O' || s[i] == 'U'){
+                upper[s[i] - 'A']++;
+                s[i] = '#';
+            }
         }
-        
-        sort(vowels.begin(),vowels.end());
-        
-        int j=0;
-        for(auto i: pos)ans[i]=vowels[j++];
-        
-        return ans;
+        // Upper Case
+        for(int i=0; i<26; i++){
+            char c = 'A' + i;
+            while(upper[i]){
+                ans += c;
+                upper[i]--;
+            }
+        }
+        // Lower Case
+        for(int i=0; i<26; i++){
+            char c = 'a' + i;
+            while(lower[i]){
+                ans += c;
+                lower[i]--;
+            }
+        }
+        // s = lEetcOde => l##tc#d#
+        // ans = EOee
+
+        int first = 0;
+        int sec = 0; 
+        while(sec < ans.size()){
+            if(s[first] == '#'){
+                s[first] = ans[sec];
+                sec++;
+            }
+            first++;
+        }
+        return s;
     }
 };
