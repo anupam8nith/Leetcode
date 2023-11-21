@@ -14,6 +14,10 @@ public:
     
     int countNicePairs(vector<int>& nums) 
     {
+        ios_base::sync_with_stdio(false);
+		cin.tie(0);
+		cout.tie(0);
+        
         int mod = 1e9+7, ans=0;
         unordered_map<int,int> revdiff;
         
