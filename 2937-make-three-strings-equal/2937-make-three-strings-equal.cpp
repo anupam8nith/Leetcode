@@ -2,6 +2,8 @@ class Solution {
 public:
     int findMinimumOperations(string s1, string s2, string s3) 
     {
+        ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+        
         if(s1[0]!=s2[0] || s1[0]!=s3[0]) return -1;
         if(s1==s2 && s1==s3) return 0;
         
