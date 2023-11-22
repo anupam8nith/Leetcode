@@ -1,16 +1,32 @@
 class Solution {
 public:
-    vector<int> findDiagonalOrder(vector<vector<int>>& nums) 
-    {
-        ios_base::sync_with_stdio(false);cin.tie(0);
+    vector<int> findDiagonalOrder(vector<vector<int>>& nums) {
         
-        map<int,vector<int>> um; vector<int> diag;
-        
-        for(int i=0;i<nums.size();i++) for(int j=0;j<nums[i].size();j++) um[i+j].push_back(nums[i][j]);
-        
-        for(auto it: um) for(auto ptr = it.second.rbegin();ptr!=it.second.rend();++ptr) diag.push_back(*ptr);
-        
-        return diag;
-        
+        queue<pair<int,int>>q;
+        q.push({0,0});
+        vector<int>ans;
+         
+
+        while(!q.empty()){
+             
+             auto [row , col ] = q.front();
+             q.pop();
+
+             ans.push_back(nums[row][col]);
+
+            //sabse pahle wale column ke last elment ke le test case row+1          taaki last me na jaaaye 
+             if(col == 0 && row + 1 < nums.size()){
+                  q.push({row+1 , col});
+             }
+
+             //sabse last wali column ke lie col + 1 wala condn lagai 
+               if (col + 1 < nums[row].size()){
+                  q.push({row,col+1});
+             }
+
+
+        }
+      return ans;
+
     }
 };
