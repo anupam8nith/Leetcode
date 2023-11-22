@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& nums) 
     {
-        ios_base::sync_with_stdio(false);
+        cout.tie(0);
         
         map<int,vector<int>> um; vector<int> diag;
         
