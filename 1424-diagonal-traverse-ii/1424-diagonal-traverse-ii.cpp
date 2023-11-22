@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& nums) 
     {
-        cout.tie(0);
+        cin.tie(0);
         
         map<int,vector<int>> um; vector<int> diag;
         
