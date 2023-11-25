@@ -2,6 +2,8 @@ class Solution {
 public:
     vector<int> getSumAbsoluteDifferences(vector<int>& nums) 
     {   
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         int n = nums.size(), total=0; 
         vector<int> right(n), ans(n);
         
