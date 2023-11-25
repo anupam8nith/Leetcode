@@ -16,7 +16,6 @@ public:
         for(int i=0;i<n;i++)
         ans[i]= abs(right[i]-(i+1)*(nums[i])) + abs(left[i]-((n-i-1)*nums[i])) - nums[i];
         
-        for(auto it: ans)cout<<it<<" ";
         
         return ans;
         
