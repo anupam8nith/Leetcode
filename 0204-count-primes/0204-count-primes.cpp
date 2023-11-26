@@ -1,23 +1,29 @@
+#include <vector>
+#include <cmath>
+
 class Solution {
 public:
     int countPrimes(int n) {
-        if (n < 2) {
+        if (n < 3) {
             return 0;
         }
 
-        vector<int> strikes(n, 1);
+        std::vector<bool> strikes(n, true);
+        strikes[0] = strikes[1] = false;
 
-        strikes[0] = 0;
-        strikes[1] = 0;
+        int count = n - 2; // All numbers are initially assumed to be prime except 0 and 1
 
-        for (int i = 2; i <= sqrt(n); ++i) {
-            if (strikes[i] != 0) {
+        for (int i = 2; i * i < n; ++i) {
+            if (strikes[i]) {
                 for (int j = i * i; j < n; j += i) {
-                    strikes[j] = 0;
+                    if (strikes[j]) {
+                        strikes[j] = false;
+                        count--;
+                    }
                 }
             }
         }
 
-        return accumulate(strikes.begin(), strikes.end(), 0);
+        return count;
     }
 };
