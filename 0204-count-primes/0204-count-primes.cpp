@@ -1,21 +1,23 @@
 class Solution {
 public:
-    int countPrimes(int n) 
-    {
-        ios_base::sync_with_stdio(false); cin.tie(NULL);cout.tie(NULL);
-        
-        vector<bool> isNotPrime(n,false);
-        
-        int countPrime=0;
-        
-        for(int i=2;i<n;i++)
-        {
-            if(isNotPrime[i])continue;
-            
-            countPrime++;
-            for(long multiple=(long)i*i ;multiple<n;multiple+=i)isNotPrime[multiple]=true;
+    int countPrimes(int n) {
+        if (n < 2) {
+            return 0;
         }
-        
-        return countPrime;
+
+        vector<int> strikes(n, 1);
+
+        strikes[0] = 0;
+        strikes[1] = 0;
+
+        for (int i = 2; i <= sqrt(n); ++i) {
+            if (strikes[i] != 0) {
+                for (int j = i * i; j < n; j += i) {
+                    strikes[j] = 0;
+                }
+            }
+        }
+
+        return accumulate(strikes.begin(), strikes.end(), 0);
     }
 };
