@@ -2,18 +2,20 @@ class Solution {
 public:
     int countPrimes(int n) 
     {
-        vector<bool> seen(n, false);
+        ios_base::sync_with_stdio(false); cin.tie(NULL);
         
-        int ans = 0;
+        vector<bool> isNotPrime(n,false);
         
-        for (int num = 2; num < n; num++) 
+        int countPrime=0;
+        
+        for(int i=2;i<n;i++)
         {
-            if (seen[num]) continue;
+            if(isNotPrime[i])continue;
             
-            ans++;
-            for (long mult = (long)num * num; mult < n; mult += num) seen[mult] = true;
+            countPrime++;
+            for(long multiple=(long)i*i ;multiple<n;multiple+=i)isNotPrime[multiple]=true;
         }
-        return ans;
         
+        return countPrime;
     }
 };
