@@ -10,9 +10,9 @@ public:
                 if(matrix[x][y] != 0 && x > 0)
                     matrix[x][y] += matrix[x-1][y];
             
-            vector<int> ones = matrix[x]; sort(ones.begin(), ones.end());
+            vector<int> ones = matrix[x]; sort(ones.begin(), ones.end(), greater());
             
-            for(int i=0; i<n;i++) ans = max(ans, ones[i] * (n-i));
+            for(int i=0; i<n;i++) ans = max(ans, ones[i] * (i+1));
         }
         return ans;
     }
