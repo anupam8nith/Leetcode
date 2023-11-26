@@ -3,7 +3,7 @@ class Solution
 public:
     int countPrimes(int n) 
     {
-        ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+        ios_base::sync_with_stdio(false);cin.tie(0);
         
         if (n < 2) return 0;
 
