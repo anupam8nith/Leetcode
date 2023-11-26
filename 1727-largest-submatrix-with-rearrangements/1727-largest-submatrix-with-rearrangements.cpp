@@ -2,7 +2,7 @@ class Solution {
 public:
     int largestSubmatrix(vector<vector<int>>& matrix) 
     {
-        ios::sync_with_stdio(0);
+        ios::sync_with_stdio(false);cout.tie(0);
         
         
         
