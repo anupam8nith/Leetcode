@@ -1,49 +1,36 @@
-class Solution 
-{
+int dp[5001][10] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+vector<vector<int>> table = {
+    {4, 6},
+    {8, 6},
+    {7, 9},
+    {4, 8},
+    {3, 9, 0},
+    {},
+    {0, 1, 7},
+    {2, 6},
+    {1, 3},
+    {2, 4},
+};
+int MOD = 1e9 + 7;
+
+class Solution {
 public:
-    const int mod = (int) 1e9 + 7; 
-    
-    int dx[8] = {1, 1, -1, -1, 2, 2, -2, -2}; 
-    int dy[8] = {2, -2, 2, -2, 1, -1, 1, -1}; 
-    
-    bool safe(int x, int y) 
-    {
-        if(x == 3 and (y == 0 or y == 2)) return false; 
-        if(x < 0 or x > 3) return false; 
-        if(y < 0 or y > 2) return false; 
-        return true; 
-    }
-    
-    int f(int x, int y, int n, vector<vector<vector<int>>>& dp) 
-    {
-        if(!safe(x, y)) return 0;
-        if(n == 1) return 1;
-        if(n < 0) return 0; 
-        
-        if(dp[x][y][n] != -1) return dp[x][y][n]; 
-        
-        int cnt = 0;
-        
-        for(int k = 0; k < 8; k++) {
-            int i = x + dx[k]; 
-            int j = y + dy[k]; 
-            if(safe(i, j)) {
-                cnt = (cnt % mod + f(i, j, n - 1, dp) % mod) % mod; 
-            }
+    int dfs(int n, int at) {
+        if (dp[n][at] != 0) {
+            return dp[n][at];
         }
-        return dp[x][y][n] = cnt % mod; 
-    }
-    
-    int knightDialer(int n) 
-    {
-        int cnt = 0; 
-        vector<vector<vector<int>>> dp(4, vector<vector<int>>(3, vector<int>(n + 1,-1))); 
         
-        for(int i = 0; i < 4; i++) 
-        {
-            for(int j = 0; j < 3; j++)
-                cnt = (cnt % mod + f(i, j, n, dp) % mod) % mod; 
+        int ret = 0;
+        for (const auto& from : table[at]) {
+            ret = (ret + dfs(n - 1, from)) % MOD;
         }
-        return cnt % mod; 
+        return dp[n][at] = ret;
+    }
+    int knightDialer(int n) {
+        int ans = 0;
+        for (int i = 0; i < 10; ++i) {
+            ans = (ans + dfs(n - 1, i)) % MOD;
+        }
+        return ans;
     }
 };
