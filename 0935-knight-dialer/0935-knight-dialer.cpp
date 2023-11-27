@@ -1,5 +1,6 @@
 int dp[5001][10] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-vector<vector<int>> table = {
+vector<vector<int>> table = 
+{
     {4, 6},
     {8, 6},
     {7, 9},
@@ -13,24 +14,27 @@ vector<vector<int>> table = {
 };
 int MOD = 1e9 + 7;
 
-class Solution {
+class Solution 
+{
 public:
-    int dfs(int n, int at) {
-        if (dp[n][at] != 0) {
+    int dfs(int n, int at) 
+    {
+        if (dp[n][at] != 0)
             return dp[n][at];
-        }
         
         int ret = 0;
-        for (const auto& from : table[at]) {
+        for (const auto& from : table[at])
             ret = (ret + dfs(n - 1, from)) % MOD;
-        }
+        
         return dp[n][at] = ret;
     }
-    int knightDialer(int n) {
+    
+    int knightDialer(int n) 
+    {
         int ans = 0;
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 10; ++i)
             ans = (ans + dfs(n - 1, i)) % MOD;
-        }
+        
         return ans;
     }
 };
