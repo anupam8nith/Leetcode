@@ -21,18 +21,19 @@ public:
               st.insert(i); 
               primes.push_back(i); 
          }
-        
+        isNotPrime.reset();
         return;
     }
     
     vector<vector<int>> findPrimePairs(int n) 
     {
+        ios_base::sync_with_stdio(false);
         if(st.size()==0)getPrimes(1000000);
         
         vector<vector<int>> ans;
         for(int i = 0; i < primes.size() && primes[i] <= n/2; ++i)
             if(st.find(n - primes[i]) != st.end()) 
-            {  ans.push_back({primes[i], n - primes[i]});  }
+            ans.push_back({primes[i], n - primes[i]});
         
         return ans;
     }
