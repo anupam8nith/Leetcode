@@ -2,6 +2,8 @@ class Solution {
 public:
     vector<vector<int>> findPrimePairs(int n) 
     {
+        ios_base::sync_with_stdio(false);cin.tie(NULL);
+        
         bitset<1000000>isNotPrime;
 
         isNotPrime[0] = 1;
