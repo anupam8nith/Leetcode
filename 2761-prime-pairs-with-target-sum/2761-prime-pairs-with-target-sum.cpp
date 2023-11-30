@@ -27,7 +27,6 @@ public:
     
     vector<vector<int>> findPrimePairs(int n) 
     {
-        ios_base::sync_with_stdio(false);
         if(st.size()==0)getPrimes(1000000);
         
         vector<vector<int>> ans;
