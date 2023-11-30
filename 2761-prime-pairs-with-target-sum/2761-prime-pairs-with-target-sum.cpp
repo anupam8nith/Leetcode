@@ -2,14 +2,15 @@ class Solution {
 public:
     vector<vector<int>> findPrimePairs(int n) 
     {
-        vector<bool> isNotPrime(n,false);
-        isNotPrime[1]=true;
-        
-        for(int i=2;i<n;i++)
+        bitset<1000000>isNotPrime;
+
+        isNotPrime[0] = 1;
+        isNotPrime[1] = 1;
+
+        for (int i = 2; i <= static_cast<int>(sqrt(n)); ++i) 
         {
-            if(isNotPrime[i])continue;
-            
-            for(long multiple = (long)i*i;multiple<n;multiple+=i)isNotPrime[multiple]=true;
+            if (isNotPrime[i] == 0) 
+                for (int j = i * i; j < n; j += i) isNotPrime[j] = 1;
         }
         
         vector<vector<int>> ans;
