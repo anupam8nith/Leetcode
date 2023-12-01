@@ -14,12 +14,12 @@ public:
             if(j<n2)
             s2+=word2[j++];
             
-//             if(s1.size()==s2.size())
-//             {
-//                 for(int i=equal_idx;i<s1.size();i++)if(s1[i]!=s2[i])return false;
+            if(s1.size()==s2.size())
+            {
+                for(int i=equal_idx;i<s1.size();i++)if(s1[i]!=s2[i])return false;
                 
-//                 equal_idx=s1.size();
-//             }
+                equal_idx=s1.size();
+            }
             
             if(i==n1 && j==n2)break;
         }
