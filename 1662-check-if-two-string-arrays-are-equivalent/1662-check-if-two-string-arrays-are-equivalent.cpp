@@ -2,6 +2,8 @@ class Solution {
 public:
     bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) 
     {
+        ios::sync_with_stdio(false);
+        
         int wrdIdx1=0,charIdx1=0,wrdIdx2=0,charIdx2=0;
         
         while(true)
