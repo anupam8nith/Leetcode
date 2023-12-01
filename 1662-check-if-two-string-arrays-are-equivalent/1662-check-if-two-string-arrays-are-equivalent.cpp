@@ -2,31 +2,25 @@ class Solution {
 public:
     bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) 
     {
-        ios_base::sync_with_stdio(false);cin.tie(NULL);
+        int wrdIdx1=0,charIdx1=0,wrdIdx2=0,charIdx2=0;
         
-        string s1="",s2="";int n1 = word1.size(), n2 = word2.size();
-        
-        int i=0,j=0, equal_idx=0;
         while(true)
         {
-            if(i<n1)
-            s1+=word1[i++];
-            if(j<n2)
-            s2+=word2[j++];
+            char c1=word1[wrdIdx1][charIdx1], c2=word2[wrdIdx2][charIdx2];
             
-            if(s1.size()==s2.size())
-            {
-                for(int i=equal_idx;i<s1.size();i++)if(s1[i]!=s2[i])return false;
-                
-                equal_idx=s1.size();
-            }
+            if(c1!=c2)return false;
             
-            if(i==n1 && j==n2)break;
+            charIdx1++;
+            charIdx2++;
+            
+            if(charIdx1==word1[wrdIdx1].size()){wrdIdx1++;charIdx1=0;}
+            if(charIdx2==word2[wrdIdx2].size()){wrdIdx2++;charIdx2=0;}
+            
+            
+            if(wrdIdx1==word1.size() && wrdIdx2==word2.size()) break;
+            if(wrdIdx1==word1.size() || wrdIdx2==word2.size()) return false;
+            
         }
-        
-        if(s1.size()!=s2.size()) return false;
-        
-        for(int i=0;i<s1.size();i++)if(s1[i]!=s2[i]) return false;
         
         return true;
     }
