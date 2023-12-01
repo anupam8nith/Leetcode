@@ -12,9 +12,9 @@ public:
             if(j<n2)
             s2+=word2[j++];
             
-            if(s1.size()==s2.size() && s1.back()!=s2.back()) return false;
+            // if(s1.size()==s2.size() && s1.back()!=s2.back()) return false;
             
-            if(i>=n1 && j>=n2)break;
+            if(i==n1 && j==n2)break;
         }
         
         if(s1.size()!=s2.size()) return false;
