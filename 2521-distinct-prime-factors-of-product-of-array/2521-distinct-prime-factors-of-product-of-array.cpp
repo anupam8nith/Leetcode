@@ -67,28 +67,3 @@ vector<int> SieveOfAtkin(int limit)
         return primes;
 }
 };
-
-// class Solution {
-// public:
-//     bool isPrime(int x)
-//     {
-//         if(x==2|| x==3) return true;
-        
-//         for(int i=2;i*i<=x;i++)if(x%i==0)return false;
-        
-//         return true;
-//     }
-//     int distinctPrimeFactors(vector<int>& nums) 
-//     {
-        
-//         set<int> s;
-        
-//         for(auto& n: nums)
-//         {
-//             for(int i=2;i*i<=n;i++)
-//                 if(n%i==0)if(isPrime(i))
-//         }
-        
-//         return s.size();
-//     }
-// };
