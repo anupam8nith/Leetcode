@@ -4,8 +4,8 @@ public:
    
     int distinctPrimeFactors(vector<int>& nums) 
     {
-        set<int>s;
-        if(primes.size()==0)primes= SieveOfAtkin(*max_element(nums.begin(), nums.end()));
+        unordered_set<int>s;
+        if(primes.size()==0)primes= SieveOfAtkin(1e4);
         
         for(auto& n: nums)
         {
