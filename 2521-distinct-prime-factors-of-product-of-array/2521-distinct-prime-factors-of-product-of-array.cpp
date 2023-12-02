@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> primes;
     
-    void getPrimes(int n)
+    void PrimeSieve(int n)
     {
         bitset<1000000>isNotPrime;
 
@@ -19,7 +19,7 @@ public:
     int distinctPrimeFactors(vector<int>& nums) 
     {
         set<int>s;
-        if(primes.size()==0)getPrimes(1e4);
+        if(primes.size()==0)PrimeSieve(1e4);
         
         for(auto& n: nums)
         {
