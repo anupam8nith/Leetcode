@@ -1,33 +1,49 @@
+#include <iostream>
+#include <vector>
+#include <set>
+#include <algorithm>
+
+using namespace std;
+
 class Solution {
 public:
     vector<int> primes;
     
-    void PrimeSieve(int n)
+    void PrimeSieve(int n) 
     {
-        bitset<1000000>isNotPrime;
+        vector<bool> isNotPrime(n + 1, false);
 
-        isNotPrime[0] = 1;isNotPrime[1] = 1;
+        isNotPrime[0] = true;
+        isNotPrime[1] = true;
+        isNotPrime[2] = false;
 
-        for (int i = 2; i <= static_cast<int>(sqrt(n)); ++i) 
-            if (isNotPrime[i] == 0) 
-                for (int j = i * i; j < n; j += i) 
-                    isNotPrime[j] = 1;
-        
-        for(int i=2;i<n;i++)if(isNotPrime[i]==0) primes.push_back(i); 
+        for (int i = 3; i * i <= n; ++i)
+            if (!isNotPrime[i])
+                for (int j = i * i; j <= n; j += i)
+                    isNotPrime[j] = true;
+
+        for (int i = 2; i <= n; ++i)
+            if (!isNotPrime[i]) primes.push_back(i);
     }
    
     int distinctPrimeFactors(vector<int>& nums) 
     {
-        set<int>s;
-        if(primes.size()==0)PrimeSieve(1e4);
+        set<int> s;
+        if (primes.empty()) PrimeSieve(*max_element(nums.begin(), nums.end()));
         
-        for(auto& n: nums)
+        for (auto& n: nums) 
         {
-            for(int i=0;i<primes.size();i++)
+            for (auto& p: primes) 
             {
-                if(primes[i]>n)break;
-                else if(n%primes[i]==0)s.insert(primes[i]);
+                if (p * p > n) break;
+                
+                if (n % p == 0) {
+                    s.insert(p);
+                    while (n % p == 0) n /= p; // Remove all occurrences of this prime factor
+                }
             }
+            
+            if (n > 1) s.insert(n); // If the remaining value is a prime factor
         }
         
         return s.size();
