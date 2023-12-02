@@ -1,5 +1,9 @@
-class Solution 
-{
+#include <iostream>
+#include <vector>
+#include <set>
+#include <algorithm>
+
+class Solution {
 public:
     vector<int> primes;
     
@@ -22,7 +26,7 @@ public:
    
     int distinctPrimeFactors(vector<int>& nums) 
     {
-        ios_base::sync_with_stdio(false);cout.tie(0);cin.tie(0);
+        ios_base::sync_with_stdio(false);cout.tie(0);
         
         set<int> s;
         if (primes.empty()) PrimeSieve(*max_element(nums.begin(), nums.end()));
