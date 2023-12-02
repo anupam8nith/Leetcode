@@ -10,7 +10,7 @@ public:
                 fraction.push_back({arr[i],arr[j]});
                  fraction.push_back({arr[j],arr[i]});
             }
-        
+    
         sort(fraction.begin(),fraction.end(), [](pair<int,int> &a, pair<int,int> &b)
              {
                  double val1= a.first/(double)a.second;
