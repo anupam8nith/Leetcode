@@ -2,16 +2,19 @@ class Solution {
 public:
     vector<int> kthSmallestPrimeFraction(vector<int>& arr, int k) 
     {
-         priority_queue<pair<double, pair<int, int>>> pq; int n = arr.size();
+        int n = arr.size();vector<pair<int,int>> fraction;
         
-         for(int i = 0 ; i < n - 1; i++)
-            for(int j = i + 1 ; j < n; j++)
+        for(int i=0;i<n;i++)
+            for(int j=i+1;j<n;j++)
             {
-                pq.push({(double)arr[i]/arr[j],{arr[i], arr[j]}});
-                
-                if(pq.size() > k) pq.pop();
-            }   
+                fraction.push_back({arr[i],arr[j]});
+            }
+    
+        sort(fraction.begin(),fraction.end(), [](pair<int,int> &a, pair<int,int> &b)
+             {
+                 return a.first/(double)a.second< b.first/(double)b.second;
+             });
         
-        return {pq.top().second.first,pq.top().second.second};  
+        return {fraction[k-1].first,fraction[k-1].second};
     }
 };
