@@ -2,44 +2,36 @@ class Solution
 {
 public:
     
-    bool isPrime(int n) 
-    {
-    if (n <= 1) return false;
-    if (n <= 3) return true;
-    if (n % 2 == 0 || n % 3 == 0) return false;
-
-    for (int i = 3; i <= static_cast<int>(sqrt(n)) + 1; i += 2)
-        if (n % i == 0) return false;
-    return true;
-    }
-
-    bool isPalindrome(string str) 
-    {
-        int l = 0, r = str.length() - 1;
-        while (l < r) {
-            if (str[l] != str[r]) return false;
-            l++;
-            r--;
+        bool isPrime(int n){
+        if(n%2 == 0) return false;
+        for(int i = 3; i <= pow(n, 0.5); i++){
+            if(n%i == 0) return false;
         }
         return true;
     }
-
-    int primePalindrome(int n) 
-    {
-        while (true) 
-        {
-            string str = to_string(n);
-            if (to_string(n).length() % 2 == 0 && n > 11) 
-            {
-                n = static_cast<int>(pow(10, ceil(log10(n + 1))));
-                continue;
-            }
-            if (!isPalindrome(str)) 
-            {
-                n++;continue;
-            }
-            if (isPrime(n)) return n;
-            n++;
+    bool isPalindrome(int n){
+        int num = n,rev = 0;
+        while(num > 0){
+            rev  = rev*10 + num % 10;
+            num /= 10;
+        };
+        return n==rev;
+    }
+    
+    int primePalindrome(int n) {
+        if(n==1 || n==2) return 2;
+        int i;
+        if(n%2 == 0) i = n+1;
+        else i=n;
+        while(true){
+            if(isPalindrome(i) && isPrime(i)) return i;
+            i += 2;     // even numbers aren't prime, so skip.
+			
+			// all even pallindromes are divided by 11 so skip them.
+            if(i > 1e7 && i < 1e8) i = 1e8 + 1;
+            if(i > 1e5 && i < 1e6) i = 1e6 + 1;
+            if(i > 1e3 && i < 1e4) i = 1e4 + 1;
+            if(i > 11 && i < 100) i = 101;
         }
         return -1;
     }
