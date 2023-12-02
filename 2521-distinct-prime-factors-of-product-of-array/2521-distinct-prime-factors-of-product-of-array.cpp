@@ -1,11 +1,5 @@
-#include <iostream>
-#include <vector>
-#include <set>
-#include <algorithm>
-
-using namespace std;
-
-class Solution {
+class Solution 
+{
 public:
     vector<int> primes;
     
