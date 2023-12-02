@@ -28,6 +28,8 @@ public:
    
     int distinctPrimeFactors(vector<int>& nums) 
     {
+        ios_base::sync_with_stdio(false);
+        
         set<int> s;
         if (primes.empty()) PrimeSieve(*max_element(nums.begin(), nums.end()));
         
