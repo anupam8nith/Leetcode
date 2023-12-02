@@ -2,7 +2,7 @@ class Solution {
 public:
     int countCharacters(vector<string>& words, string chars) 
     {
-        ios_base::sync_with_stdio(false);cin.tie(0);
+        ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
         
         unordered_map<char,int> um; int ans=0;
         for(char& ch: chars)um[ch]++;
