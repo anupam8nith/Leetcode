@@ -1,69 +1,45 @@
 class Solution {
 public:
     vector<int> primes;
+    
+    void PrimeSieve(int n) 
+    {
+        vector<bool> isNotPrime(n + 1, false);
+
+        isNotPrime[0] = true;
+        isNotPrime[1] = true;
+        isNotPrime[2] = false;
+
+        for (int i = 3; i * i <= n; ++i)
+            if (!isNotPrime[i])
+                for (int j = i * i; j <= n; j += i)
+                    isNotPrime[j] = true;
+
+        for (int i = 2; i <= n; ++i)
+            if (!isNotPrime[i]) primes.push_back(i);
+    }
    
     int distinctPrimeFactors(vector<int>& nums) 
     {
-        unordered_set<int>s;
-        if(primes.size()==0)primes= SieveOfAtkin(1e4);
+        ios_base::sync_with_stdio(false);cout.tie(0);
+		
+        unordered_set<int> s;
+        if (primes.empty()) PrimeSieve(*max_element(nums.begin(), nums.end()));
         
-        for(auto& n: nums)
+        for (auto& n: nums) 
         {
-            for(int i=0;i<primes.size();i++)
+            for (auto& p: primes) 
             {
-                if(primes[i]>n)break;
-                else if(n%primes[i]==0)s.insert(primes[i]);
-            }
-        }
-        
-        return s.size();
-    }
-    
-    
-vector<int> SieveOfAtkin(int limit) 
-{
-        vector<bool> isPrime(limit + 1, false);
-        vector<int> primes;
-
-        // Mark small primes
-        if (limit >= 2) primes.push_back(2);
-        if (limit >= 3) primes.push_back(3);
-
-        // Initialize sieve arrays
-        vector<bool> sieve(limit + 1, false);
-
-        int sqrtLimit = static_cast<int>(sqrt(limit));
-        for (int x = 1; x <= sqrtLimit; x++) {
-            for (int y = 1; y <= sqrtLimit; y++) {
-                int n = (4 * x * x) + (y * y);
-                if (n <= limit && (n % 12 == 1 || n % 12 == 5))
-                    sieve[n] = !sieve[n];
-
-                n = (3 * x * x) + (y * y);
-                if (n <= limit && (n % 12 == 7))
-                    sieve[n] = !sieve[n];
-
-                n = (3 * x * x) - (y * y);
-                if (x > y && n <= limit && (n % 12 == 11))
-                    sieve[n] = !sieve[n];
-            }
-        }
-
-        for (int n = 5; n <= sqrtLimit; n++) {
-            if (sieve[n]) {
-                int sqrN = n * n;
-                for (int k = sqrN; k <= limit; k += sqrN) {
-                    sieve[k] = false;
+                if (p * p > n) break;
+                
+                if (n % p == 0) 
+                {
+                    s.insert(p);  while (n % p == 0) n /= p; // Remove all occurrences of this prime factor
                 }
             }
+            
+            if (n > 1) s.insert(n); // If the remaining value is a prime factor
         }
-
-        // Collect primes
-        for (int i = 5; i <= limit; i++) {
-            if (sieve[i])
-                primes.push_back(i);
-        }
-
-        return primes;
-}
+        return s.size();
+    }
 };
