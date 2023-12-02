@@ -37,7 +37,8 @@ public:
             {
                 if (p * p > n) break;
                 
-                if (n % p == 0) {
+                if (n % p == 0) 
+                {
                     s.insert(p);
                     while (n % p == 0) n /= p; // Remove all occurrences of this prime factor
                 }
