@@ -1,23 +1,22 @@
-class Solution {
+class Solution 
+{
 public:
     int countCharacters(vector<string>& words, string chars) 
     {
-        ios_base::sync_with_stdio(false);cout.tie(0);
+        int count[26]{}; int ans = 0;
         
-        unordered_map<char,int> um; int ans=0;
-        for(char& ch: chars)um[ch]++;
+        for(char& c : chars) ++count[c - 'a'];
         
-        for(string& str:words)
+        for(string& word : words) 
         {
-            unordered_map<char,int> temp;
-            for(char& ch: str)temp[ch]++;
+            int wCount[26]{}; bool good = true;
             
-            bool flag=true;
-            for(auto &it: temp)if(um[it.first]<it.second){flag=false;break;}
+            for(char& c : word) ++wCount[c - 'a'];
             
-            if(flag)ans+=str.size();
+            for(int i = 0; i < 26; i++) if(count[i] < wCount[i]){good=false;break;};
+            
+            if(good) ans += word.size();
         }
-        
         return ans;
     }
 };
