@@ -13,10 +13,8 @@ public:
         
         sort(fraction.begin(),fraction.end(), [](pair<int,int> &a, pair<int,int> &b)
              {
-                 double val1= ((double)a.first)/((double)a.second);
-                 double val2= (double)b.first/(double)b.second;
-                 
-                 if(val1==val2)return a.first<b.first;
+                 double val1= a.first/(double)a.second;
+                 double val2= b.first/(double)b.second;
                  
                  return val1<val2;
              });
