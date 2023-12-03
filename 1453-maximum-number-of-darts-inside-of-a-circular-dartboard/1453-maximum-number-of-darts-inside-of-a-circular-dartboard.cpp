@@ -3,7 +3,7 @@ class Solution
 public:
     int numPoints(vector<vector<int>>& points, int r) 
     {
-        ios_base::sync_with_stdio(false);
+        ios_base::sync_with_stdio(false);cout.tie(NULL);
         
         int res = 1;
         // use a constant variable to store r * r
