@@ -5,7 +5,7 @@ public:
         string ans="";
         
         for(int i=1;i<num.size()-1;i++) if(num[i]==num[i-1] && num[i]==num[i+1])
-                {string temp;temp+=num[i-1];temp+=num[i];temp+=num[i+1];ans = max(ans,temp);}
+        ans = max(ans,num.substr(i-1,3));
         
         return ans;
     }
