@@ -2,16 +2,16 @@ class Solution {
 public:
     int totalMoney(int n) 
     {
-        int additional=0, tot=0;
-        
-        for(int i=1;i<=n;i++)
-        { 
-            tot+=(i%7)+additional;
-            
-            if(i%7==0)
-            {additional++;tot+=7;}
+        int weeks  = n / 7;
+        int remain_days = n % 7,saving_in_week = 28;
+        int day_in_week = 0,savings = 0;
+        for (int i = 1; i <= weeks; i++){
+            savings =  savings + saving_in_week + day_in_week;
+            day_in_week = day_in_week + 7;
         }
-        
-        return tot;
-    }
+        for (int j = weeks+1; j <= remain_days+weeks; j++){
+            savings = savings + j;
+        }
+        return savings;
+}
 };
