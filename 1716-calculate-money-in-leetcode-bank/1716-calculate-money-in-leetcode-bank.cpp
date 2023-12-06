@@ -13,5 +13,5 @@ public:
             savings = savings + j;
         }
         return savings;
-}
+    }
 };
