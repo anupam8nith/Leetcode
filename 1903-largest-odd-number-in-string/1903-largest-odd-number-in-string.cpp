@@ -2,6 +2,8 @@ class Solution {
 public:
     string largestOddNumber(string num) 
     {
+        ios_base::sync_with_stdio(false);cin.tie(NULL);
+        
         int n = num.size(); string ans="";
         
         for(int i=n-1;i>=0;i--)
