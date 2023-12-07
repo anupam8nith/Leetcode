@@ -4,12 +4,12 @@ public:
     {
         ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
         
-        int n = num.size(); string ans="";
+        int n = num.size();
         
         for(int i=n-1;i>=0;i--)
-            if(((num[i]-'0'))&1){ans=max(ans,num.substr(0,i+1));break;}
+            if(((num[i]-'0'))&1) return num.substr(0,i+1);
         
-        return ans;
+        return "";
         
     }
 };
