@@ -1,16 +1,15 @@
 class Solution {
 public:
-    vector<vector<int>> transpose(vector<vector<int>>& matrix) \
-    {
-        ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+    vector<vector<int>> transpose(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int m = matrix[0].size();
         
-        int m = matrix.size(),n=matrix[0].size();
-        
-        vector<vector<int>> transposed(n, vector<int>(m, 0));
-            for(int i=0;i<n;i++)
-                for(int j=0;j<m;j++)
-                    transposed[i][j]=matrix[j][i];
-            
-        return transposed;
+        vector<vector<int>> res(m,vector<int> (n,0)); // matrix creation
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                res[j][i] = matrix[i][j]; // filling the matrix in transpose form
+            }
+        }
+        return res;
     }
 };
