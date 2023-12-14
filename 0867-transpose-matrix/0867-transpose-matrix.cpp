@@ -2,6 +2,8 @@ class Solution {
 public:
     vector<vector<int>> transpose(vector<vector<int>>& matrix) \
     {
+        ios_base::sync_with_stdio(false);cin.tie(NULL);
+        
         int m = matrix.size(),n=matrix[0].size();
         
         if(m==n)
