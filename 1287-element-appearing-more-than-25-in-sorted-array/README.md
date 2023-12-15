@@ -3,15 +3,15 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre style="position: relative;"><strong>Input:</strong> arr = [1,2,2,6,6,6,6,7,10]
+<pre><strong>Input:</strong> arr = [1,2,2,6,6,6,6,7,10]
 <strong>Output:</strong> 6
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre style="position: relative;"><strong>Input:</strong> arr = [1,1]
+<pre><strong>Input:</strong> arr = [1,1]
 <strong>Output:</strong> 1
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
