@@ -1,16 +1,18 @@
 from collections import Counter
 class Solution(object):
     def isAnagram(self, s, t):
+        
+        if len(s)!=len(t):
+            return False;
+            
         mp1 = Counter(s)
-        mp2= Counter(t)
         
-        if len(mp1)!=len(mp2):
-            return False
+        for ch in t:
+            mp1[ch]-=1
+            if mp1[ch]==0:
+                del mp1[ch]
+                
         
-        for char,freq in mp1.items():
-            if freq!=mp2[char]:
-                return False
-        
-        return True;
+        return len(mp1)==0
         
         
