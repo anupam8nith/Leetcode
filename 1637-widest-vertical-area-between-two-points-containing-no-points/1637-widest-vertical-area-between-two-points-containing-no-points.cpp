@@ -1,5 +1,12 @@
 class Solution {
 public:
+    Solution()
+    {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    }
+    
     int maxWidthOfVerticalArea(vector<vector<int>>& points) 
     {
         vector<int> x(points.size()); int ans=0;
