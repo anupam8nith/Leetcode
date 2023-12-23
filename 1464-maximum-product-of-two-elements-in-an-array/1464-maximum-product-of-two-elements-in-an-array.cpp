@@ -2,8 +2,6 @@ class Solution {
 public:
     int maxProduct(vector<int>& nums) 
     {
-        if (nums.size() < 2) return -1;
-        
         int f=INT_MIN,s=INT_MIN;
         
         for(auto &it: nums)
