@@ -1,5 +1,12 @@
 class Solution {
 public:
+    Solution()
+    {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    }
+    
     vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid) 
     {
         int rows= grid.size(), col = grid[0].size();
