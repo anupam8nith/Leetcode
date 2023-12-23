@@ -1,4 +1,5 @@
-class Solution {
+class Solution 
+{
 public:
     Solution()
     {
@@ -6,47 +7,28 @@ public:
     cin.tie(NULL);
     cout.tie(NULL);
     }
-    
-    vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid) 
-    {
-        int rows= grid.size(), col = grid[0].size();
-        
-        vector<vector<int>> diff(rows, vector<int>(col));
-        
-        vector<int> onesCol(col),onesRow(rows), zeroCol(col), zeroRow(rows);
-        
-        //count zeroes and ones in rows
-        for(int i=0;i<rows;i++)
-        {
-            int count1=0,count0=0;
-            
-            for(int j=0;j<col;j++)
-            {
-                if(grid[i][j]==0)count0++;
-                else if(grid[i][j]==1)count1++;
+    vector<vector<int>> onesMinusZeros(vector<vector<int>>& grid) {
+        int m = grid.size();
+        int n = grid[0].size();
+
+        vector<int> rowOnes(m, 0);
+        vector<int> colOnes(n, 0);
+
+        // Count ones in each row and column
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                rowOnes[i] += grid[i][j];
+                colOnes[j] += grid[i][j];
             }
-            
-            onesRow[i]=count1;zeroRow[i]=count0;
         }
-        
-        for(int j=0;j<col;j++)
-        {
-            int count1=0,count0=0;
-            
-            for(int i=0;i<rows;i++)
-            {
-                if(grid[i][j]==0)count0++;
-                else if(grid[i][j]==1)count1++;
+
+        // Calculate the difference matrix
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                grid[i][j] = 2 * (rowOnes[i] + colOnes[j]) - m - n;
             }
-            
-            onesCol[j]=count1;zeroCol[j]=count0;
         }
-        
-        for(int i=0;i<rows;i++)
-            for(int j=0;j<col;j++)
-                diff[i][j]=onesRow[i]+onesCol[j]-zeroRow[i]-zeroCol[j];
-        
-        return diff;
-        
+
+        return grid;
     }
 };
