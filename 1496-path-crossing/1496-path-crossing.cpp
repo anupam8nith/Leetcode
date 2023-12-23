@@ -1,24 +1,15 @@
 class Solution {
 public:
     bool isPathCrossing(string path) {
-        unordered_set<string> loc;
+        set<pair<int, int>> loc = {{0, 0}};  // Use set for efficient lookups
         pair<int, int> position = {0, 0};
-        loc.insert(to_string(position.first) + "," + to_string(position.second));
-        
-        for (char ch : path) {
-            if (ch == 'N') position.second++;
-            else if (ch == 'S') position.second--;
-            else if (ch == 'E') position.first++;
-            else if (ch == 'W') position.first--;
 
-            string pos_str = to_string(position.first) + "," + to_string(position.second);
-            
-            if (loc.count(pos_str) == 0) {
-                loc.insert(pos_str);
-            } else {
-                return true;
-            }
+        for (char ch : path) {
+            position = { position.first + (ch == 'E') - (ch == 'W'),
+                         position.second + (ch == 'N') - (ch == 'S') };
+            if (!loc.insert(position).second) return true;  // Check for insertion success
         }
+
         return false;
     }
 };
