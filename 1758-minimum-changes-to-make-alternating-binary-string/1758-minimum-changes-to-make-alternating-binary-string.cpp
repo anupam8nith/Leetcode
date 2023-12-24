@@ -1,5 +1,12 @@
 class Solution {
 public:
+    Solution()
+    {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+    }
+    
     int minOperations(string s) 
     {
         int count1=0,count0=0, n = s.size(),ans=0;
