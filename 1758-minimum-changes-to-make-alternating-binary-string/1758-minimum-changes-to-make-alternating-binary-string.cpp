@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int minOperations(string s) 
+    {
+        int count1=0,count0=0, n = s.size(),ans=0;
+        
+        for(char& ch: s)count1+=(ch=='1');
+        count0=n-count1;
+        
+        for(int i=1;i<n;i++)
+        {
+            if(s[i-1]=='0' && s[i]=='1')continue;
+            if(s[i-1]=='1' && s[i]=='0')continue;
+            
+            if(s[i-1]=='0'){s[i]='1';ans++;}
+             if(s[i-1]=='1'){s[i]='0';ans++;}
+            
+        }
+        
+        return min(ans,n-ans);
+    }
+};
