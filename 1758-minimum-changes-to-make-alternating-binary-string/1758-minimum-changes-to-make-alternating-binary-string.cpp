@@ -9,11 +9,10 @@ public:
         
         for(int i=1;i<n;i++)
         {
-            if(s[i-1]=='0' && s[i]=='1')continue;
-            if(s[i-1]=='1' && s[i]=='0')continue;
+            if( (s[i-1]=='0' && s[i]=='1') || (s[i-1]=='1' && s[i]=='0') )continue;
             
-            if(s[i-1]=='0'){s[i]='1';ans++;}
-             if(s[i-1]=='1'){s[i]='0';ans++;}
+            if(s[i-1]=='0'){s[i]='1';ans++;continue;}
+            if(s[i-1]=='1'){s[i]='0';ans++;continue;}
             
         }
         
