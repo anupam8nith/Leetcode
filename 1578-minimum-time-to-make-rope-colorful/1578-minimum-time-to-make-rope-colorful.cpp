@@ -1,6 +1,12 @@
 class Solution {
 public:
-    int minCost(string colors, vector<int>& neededTime) 
+    Solution()
+    {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL); cout.tie(NULL);
+    }
+    
+    int minCost(string colors, vector<int>& neededTime)
     {
         int n = colors.size(),ans=0;
         
