@@ -1,25 +1,20 @@
-class Solution {
+class Solution 
+{
 public:
-    Solution()
-    {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL); cout.tie(NULL);
-    }
-    
     int minCost(string colors, vector<int>& neededTime)
     {
         int n = colors.size(),ans=0;
         
         for(int i=0;i<n;i++)
         {
-            int j=i; vector<int> time;
+            int j=i+1, mxt= neededTime[i];
             
-            while(colors[i]==colors[j] &&j<n) {time.push_back(neededTime[j]);j++;}
-            
-            if(time.size()!=0)
+            while(colors[i]==colors[j] && j<n)
             {
-                sort(time.begin(),time.end());
-                for(int cnt=0;cnt<time.size()-1;cnt++)ans+=time[cnt];
+                if(neededTime[j]<mxt)
+                ans+=neededTime[j];
+                else {ans+=mxt;mxt=neededTime[j];}
+                j++;
             }
             
             i=j-1;
@@ -28,3 +23,6 @@ public:
         
     }
 };
+
+//TC = O(klogk) where k is the largest sequence of equal colors
+// SC = O(n)
