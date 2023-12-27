@@ -14,9 +14,9 @@ public:
                 if(neededTime[j]<mxt)
                 ans+=neededTime[j];
                 else {ans+=mxt;mxt=neededTime[j];}
+                
                 j++;
             }
-            
             i=j-1;
         }
         return ans;
@@ -24,5 +24,5 @@ public:
     }
 };
 
-//TC = O(klogk) where k is the largest sequence of equal colors
-// SC = O(n)
+//TC = O(n)
+// SC = O(1)
