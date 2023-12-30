@@ -5,8 +5,8 @@ public:
         int n = words.size();
         unordered_map<char,int> um;
         
-        for(auto& str: words)
-           for(auto& ch: str)um[ch]++;
+        for(string& str: words)
+           for(char& ch: str)um[ch]++;
        
         for(auto& var: um)if(var.second%n!=0) return false;
         
