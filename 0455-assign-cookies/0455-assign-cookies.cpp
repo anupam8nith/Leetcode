@@ -2,8 +2,8 @@ class Solution {
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) 
     {
-        std::ios::sync_with_stdio(false);
-        cin.tie(NULL);
+//         std::ios::sync_with_stdio(false);
+//         cin.tie(NULL);
         
         multiset<int> ms;
         
