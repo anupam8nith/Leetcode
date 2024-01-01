@@ -2,21 +2,18 @@ class Solution {
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) 
     {
-        std::ios::sync_with_stdio(false);
-        cin.tie(NULL);
+        multiset<int> ms;
         
-        int count=0, i=0,j=0;
-        sort(g.begin(),g.end()); sort(s.begin(),s.end());
-
-       while(i<g.size() && j<s.size())
+        for(int& it: s)ms.insert(it); int ans=0; 
+        
+        for(int& target: g)
         {
-                if(s[j]>=g[i])
-                {
-                    count++; i++;
-                    if(count==s.size()) return count;
-                }
-                j++;
-        }        
-        return count;
+            if(ms.empty()) return ans;
+            
+            auto ptr = ms.lower_bound(target);
+            if(ptr!=ms.end()){ans++;ms.erase(ptr);}
+        }
+        
+        return ans;
     }
 };
