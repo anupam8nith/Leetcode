@@ -2,20 +2,27 @@ class Solution {
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) 
     {
-        std::ios::sync_with_stdio(false);cin.tie(NULL);
-        
-        int count=0, i=0,j=0;
-        sort(g.begin(),g.end()); sort(s.begin(),s.end());
+        // std::ios::sync_with_stdio(false);cin.tie(NULL);
 
-       while(i<g.size() && j<s.size())
+        if (g.size() == 0 || s.size() == 0)
+            return 0;
+
+        sort(g.begin(), g.end());sort(s.begin(), s.end());
+        int gi = 0,si = 0, ans = 0;
+        for (auto child : g) 
         {
-                if(s[j]>=g[i])
-                {
-                    count++; i++;
-                    if(count==s.size()) return count;
-                }
-                j++;
-        }        
-        return count;
+            while (s[si] < child) 
+            {
+                si++;
+                // all cookies are content
+                if (si >= s.size())return ans;
+            }
+            si++;ans++;
+
+            // all cookies are content
+            if (si >= s.size())return ans;
+        }
+
+        return ans;
     }
 };
