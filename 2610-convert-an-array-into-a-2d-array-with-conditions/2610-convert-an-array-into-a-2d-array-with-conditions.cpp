@@ -6,8 +6,6 @@ public:
         
         for(int& it: nums)freq[it]++;
         
-        if(freq.size()==nums.size()) return {{nums.begin(), nums.end()}};
-        
         while (!freq.empty()) 
         {
             vector<int> row;
