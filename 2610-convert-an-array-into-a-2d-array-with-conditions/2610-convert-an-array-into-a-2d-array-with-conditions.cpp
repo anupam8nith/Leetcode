@@ -10,17 +10,16 @@ public:
         
         while (!freq.empty()) 
         {
-            vector<int> row,toErase;
+            vector<int> row;
             
-            for (auto& it : freq) 
+            for (auto it=freq.begin();it!=freq.end();) 
             {
-                row.push_back(it.first); 
-                it.second--;
-                if (it.second == 0) toErase.push_back(it.first);
+                row.push_back(it->first); 
+                it->second--;
+                if (it->second == 0) it = freq.erase(it);
+                else it++;
             }
             ans.push_back(row);
-            
-            for (int& key : toErase) freq.erase(key);
         }
         
         return ans;
