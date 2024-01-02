@@ -1,25 +1,16 @@
 class Solution {
 public:
-    vector<vector<int>> findMatrix(vector<int>& nums) 
+    vector<vector<int>> findMatrix(vector<int>& nums) \
     {
-        vector<vector<int>> ans; unordered_map<int,int> freq; 
+        int cnt[201] = {}, max_cnt = 0;
+        for (auto n : nums)
+            max_cnt = max(max_cnt, ++cnt[n]);
+
+        vector<vector<int>> res(max_cnt);
+        for (int i = 0; i < 201; ++i)
+            for (int j = 0; j < cnt[i]; ++j)
+                res[j].push_back(i);
         
-        for(int& it: nums)freq[it]++;
-        
-        while (!freq.empty()) 
-        {
-            vector<int> row;
-            
-            for (auto it=freq.begin();it!=freq.end();) 
-            {
-                row.push_back(it->first); 
-                it->second--;
-                if (it->second == 0) it = freq.erase(it);
-                else it++;
-            }
-            ans.push_back(row);
-        }
-        
-        return ans;
+        return res;
     }
 };
