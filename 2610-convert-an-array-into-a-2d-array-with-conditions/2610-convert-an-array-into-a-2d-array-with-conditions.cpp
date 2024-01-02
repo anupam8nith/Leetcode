@@ -1,16 +1,14 @@
 class Solution {
 public:
-    vector<vector<int>> findMatrix(vector<int>& nums) \
-    {
-        int cnt[201] = {}, max_cnt = 0;
-        for (auto n : nums)
-            max_cnt = max(max_cnt, ++cnt[n]);
-
-        vector<vector<int>> res(max_cnt);
-        for (int i = 0; i < 201; ++i)
-            for (int j = 0; j < cnt[i]; ++j)
-                res[j].push_back(i);
-        
+    vector<vector<int>> findMatrix(vector<int>& A) {
+        int n = A.size();
+        vector<int> count(n + 10);
+        vector<vector<int>> res;
+        for (int a : A) {
+            if (res.size() <= count[a])
+                res.push_back({});
+            res[count[a]++].push_back(a);
+        }
         return res;
     }
 };
