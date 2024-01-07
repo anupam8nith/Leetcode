@@ -1,8 +1,8 @@
 class Solution {
 public:
     int numberOfArithmeticSlices(vector<int>& nums) {
-        int ans=0;
-        int n=nums.size();
+        int ans=0, n=nums.size();
+        
         vector<map<int,int>> maps(n);
 
         for(int i=1;i<n;i++)
