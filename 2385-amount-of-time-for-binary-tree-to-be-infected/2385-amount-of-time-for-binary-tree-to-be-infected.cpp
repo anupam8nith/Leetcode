@@ -4,16 +4,19 @@ public:
     unordered_set<TreeNode*> visited;  // To track visited nodes
     TreeNode* infected;
 
-    void traverse(TreeNode* root, int start) {
+    void traverse(TreeNode* root, int start) 
+    {
         if (!root) return;
 
         if (root->val == start) infected = root;
 
-        if (root->left) {
+        if (root->left) 
+        {
             adj[root].push_back(root->left);
             adj[root->left].push_back(root); // Adding parent to child's adjacency list
         }
-        if (root->right) {
+        if (root->right) 
+        {
             adj[root].push_back(root->right);
             adj[root->right].push_back(root); // Adding parent to child's adjacency list
         }
@@ -22,27 +25,33 @@ public:
         traverse(root->right, start);
     }
 
-    int amountOfTime(TreeNode* root, int start) {
+    int amountOfTime(TreeNode* root, int start) 
+    {
         if (!root) return 0;
 
         int ans = 0;
         traverse(root, start);
         queue<TreeNode*> q;
         
-        if (infected) {
+        if (infected) 
+        {
             q.push(infected);
             visited.insert(infected);
         }
 
-        while (!q.empty()) {
+        while (!q.empty()) 
+        {
             int sz = q.size();
 
-            for (int i = 0; i < sz; i++) {
+            for (int i = 0; i < sz; i++) 
+            {
                 TreeNode* node = q.front();
                 q.pop();
 
-                for (auto neighbor : adj[node]) {
-                    if (visited.find(neighbor) == visited.end()) {
+                for (auto neighbor : adj[node]) 
+                {
+                    if (visited.find(neighbor) == visited.end()) 
+                    {
                         q.push(neighbor);
                         visited.insert(neighbor);
                     }
