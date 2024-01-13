@@ -1,15 +1,12 @@
 class Solution:
     def minSteps(self, s: str, t: str) -> int:
-        freqS = Counter(s)
-        ans = 0
-        
-        for ch in t:
-            if freqS[ch]!=0:
-                freqS[ch]-=1
-            else :
-                ans += 1
-        for i in freqS.values():
-            ans+=i
-        
-        return ans//2;
-            
+        freq=[0]*26
+        for c in s:
+            freq[ord(c)-ord('a')]+=1
+        for c in t:
+            freq[ord(c)-ord('a')]-=1
+        ans=0
+        for i in range(26):
+            if freq[i]>0:
+                ans+=freq[i]
+        return ans
