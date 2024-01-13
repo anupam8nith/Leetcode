@@ -1,19 +1,15 @@
 class Solution {
 public:
-    int minSteps(string s, string t) 
-    {
-        int ans =0; unordered_map<char,int> um;
-        
-        for(char& ch: s)um[ch]++;
-        
-        for(char&ch: t)
-        {
-            if(um[ch]!=0){um[ch]--;}
-            else ans++;   
-        }
-        
-        for(auto& it:um)ans+=it.second;
-        
-        return ans/2;
+    int minSteps(string& s, string& t) {
+    int freq[26]={0}, ans=0, n=size(s);
+    for (int i=0; i<n; i++){
+        freq[s[i]-'a']++;
+        freq[t[i]-'a']--;
     }
+    for( int i=0; i<26; i++)
+        if (freq[i]>0)
+            ans+=freq[i];
+    return ans;
+}
+
 };
