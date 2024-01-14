@@ -2,6 +2,10 @@ class Solution {
 public:
     bool closeStrings(string word1, string word2) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+
+        
         vector<int> freq1(26,0), freq2(26,0);
         
         for (int i=0; i<word1.size(); i++) freq1[word1[i]-'a']++;
@@ -18,9 +22,6 @@ public:
         
         sort(freq1.begin(), freq1.end());
         sort(freq2.begin(), freq2.end());
-        
-//         for(auto it: freq1) cout<<it<<" ";cout<<endl;
-//         for(auto it: freq2) cout<<it<<" ";cout<<endl;
         
         for(int i=0;i<26;i++)if(freq1[i]!=freq2[i]) return false;
         
