@@ -2,53 +2,27 @@ class Solution {
 public:
     bool closeStrings(string word1, string word2) 
     {
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
+        vector<int> freq1(26,0), freq2(26,0);
         
-        if(word1.size()!=word2.size())
-            return false;
+        for (int i=0; i<word1.size(); i++) freq1[word1[i]-'a']++;
+        for (int i=0; i<word2.size(); i++) freq2[word2[i]-'a']++;
         
-        // if size is same;
-        
-        unordered_map<char,int> um1,um2;
-        
-        for(auto ch: word1)
-            um1[ch]++;
-        
-        for(auto ch: word2)
-            um2[ch]++;
-        
-         if(um1.size()!= um2.size())
-            return false;
-        
-        if(um1==um2)
-            return true;
-        else
+        for(int i=0;i<26;i++)
         {
-            for(auto ch: um1)
-                if(um2[ch.first]==0)
-                    return false;
+            if(freq1[i]!=0)
+                if(freq2[i]==0) return false;
             
-            for(auto ch: um2)
-                if(um1[ch.first]==0)
-                    return false;
-            
-            vector<int> v1, v2;
-            
-                for(auto ch: um1)
-                v1.push_back(ch.second);
-            
-                for(auto ch: um2)
-                v2.push_back(ch.second);
-            
-                sort(v1.begin(),v1.end());
-                sort(v2.begin(),v2.end());
-            
-            if(v1==v2)
-                return true;
-            else
-                return false;
+            if(freq2[i]!=0)
+                if(freq1[i]==0) return false;
         }
+        
+        sort(freq1.begin(), freq1.end());
+        sort(freq2.begin(), freq2.end());
+        
+//         for(auto it: freq1) cout<<it<<" ";cout<<endl;
+//         for(auto it: freq2) cout<<it<<" ";cout<<endl;
+        
+        for(int i=0;i<26;i++)if(freq1[i]!=freq2[i]) return false;
         
         return true;
         
