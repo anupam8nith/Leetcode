@@ -1,21 +1,13 @@
 class Solution {
 public:
-    vector<int> dp;
-    int count (int i)
-    {
-        if(i<0) return 0;
-        else if(i<=1)return 1;
-        else if(dp[i]!=0) return dp[i];
-        else dp[i] = count(i-1) + count(i-2);
-        
-        return dp[i];
-    }
-    
-    int climbStairs(int n) 
-    {
-        dp.resize(n+1);
-        
-        return count(n);
-        
+    int climbStairs(int n) {
+        int next2=1;
+        int next1=1;
+        for(int i=n-2;i>=0;i--){
+            int curr  = next2 + next1;
+            next2=next1;
+            next1=curr;
+        }
+        return next1;
     }
 };
