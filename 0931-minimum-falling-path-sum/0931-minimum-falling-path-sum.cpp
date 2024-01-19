@@ -9,6 +9,9 @@ public:
     
     int minFallingPathSum(vector<vector<int>>& matrix) 
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
         int r = matrix.size(), c= matrix[0].size(); 
 
         for(int i=1;i<r;i++)
