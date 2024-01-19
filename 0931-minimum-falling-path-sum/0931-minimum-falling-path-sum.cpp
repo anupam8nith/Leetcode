@@ -20,8 +20,7 @@ public:
                 if(isValid(i-1,j,r,c)) temp= min(temp,matrix[i-1][j]);
                 if(isValid(i-1,j+1,r,c)) temp= min(temp,matrix[i-1][j+1]);
                 
-                matrix[i][j]+=temp;
-                
+                matrix[i][j]+=temp;      
             }
         
         return *min_element(matrix[r-1].begin(),matrix[r-1].end());
