@@ -2,10 +2,7 @@ class Solution {
 public:
     int largestSubmatrix(vector<vector<int>>& matrix) 
     {
-        ios::sync_with_stdio(0);cout.tie(0);cin.tie(0);
-    
         int m = matrix.size(), n = matrix[0].size();int ans = 0;
-        
         for (int x = 0; x<m; x++)
         {
             for(int y = 0; y<n; y++)
