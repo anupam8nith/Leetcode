@@ -1,46 +1,32 @@
 class Solution {
 public:
-    string minWindow(string s, string t) 
-    {
-        int m = s.size(), n = t.size();
+    string minWindow(string s, string t) {
+        int m = t.length();
+        int n = s.length();
+        vector<int> mp(128,0);
+        int counter = m, start = 0;
+        int minLength = INT_MAX;
+        int minStart;
 
-        if (m < n) return "";
-
-        unordered_map<char, int> tmap, smap;
-
-        for (char ch : t) tmap[ch]++;
-
-        int i = 0, j = 0, minStart = 0, minLen = INT_MAX;
-
-        int counter = n;
-
-        while (j < m) 
-        {
-            char ch = s[j];
-            smap[ch]++;
-
-            if (tmap.count(ch) && smap[ch] <= tmap[ch])
-                counter--;
-
-            while (counter == 0) 
-            {
-                if (j - i + 1 < minLen) 
-                {
-                    minStart = i;
-                    minLen = j - i + 1;
-                }
-
-                char ch = s[i];
-                smap[ch]--;
-
-                if (tmap.count(ch) && smap[ch] < tmap[ch])
-                    counter++;
-
-                i++;
-            }
-            j++;
+        for(int i=0; i<m; i++){
+            mp[t[i]-'A']++;
         }
 
-        return minLen == INT_MAX ? "" : s.substr(minStart, minLen);
+        for(int end=0; end<n; end++){
+            mp[s[end]-'A']--;
+            if(mp[s[end]-'A']>=0) counter--;
+
+            while(counter==0){
+                if(end-start+1<minLength){
+                    minStart = start;
+                    minLength = end-start+1;
+                }
+                mp[s[start]-'A']++;
+                if(mp[s[start]-'A']>0) counter++;
+                start++;
+            }
+        }
+
+        return minLength==INT_MAX ? "" : s.substr(minStart, minLength);
     }
 };
