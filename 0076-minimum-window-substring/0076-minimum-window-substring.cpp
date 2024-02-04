@@ -1,6 +1,7 @@
 class Solution {
 public:
-    string minWindow(string s, string t) {
+    string minWindow(string s, string t) 
+    {
         int m = s.size(), n = t.size();
 
         if (m < n) return "";
@@ -13,16 +14,18 @@ public:
 
         int counter = n;
 
-        while (j < m) {
+        while (j < m) 
+        {
             char ch = s[j];
             smap[ch]++;
 
-            if (tmap.count(ch) && smap[ch] <= tmap[ch]) {
+            if (tmap.count(ch) && smap[ch] <= tmap[ch])
                 counter--;
-            }
 
-            while (counter == 0) {
-                if (j - i + 1 < minLen) {
+            while (counter == 0) 
+            {
+                if (j - i + 1 < minLen) 
+                {
                     minStart = i;
                     minLen = j - i + 1;
                 }
@@ -30,9 +33,8 @@ public:
                 char ch = s[i];
                 smap[ch]--;
 
-                if (tmap.count(ch) && smap[ch] < tmap[ch]) {
+                if (tmap.count(ch) && smap[ch] < tmap[ch])
                     counter++;
-                }
 
                 i++;
             }
