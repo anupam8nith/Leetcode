@@ -1,31 +1,30 @@
 class Solution {
 public:
-    
     string frequencySort(string s) 
     {
         unordered_map<char,int> um;
+        for(auto& ch: s)um[ch]++;
         
-        for(int i=0;i<s.length();i++) um[s[i]]++; //freq stored
+        vector<pair<int,char>> map;
+        
+        for(auto it: um)map.push_back({it.second,it.first});
+
+        
+        sort(map.begin(),map.end(),[](pair<int,char>& a, pair<int,char>& b)
+         {
+             if(a.first == b.first)
+                 return a.second < b.second; // Sort alphabetically if frequencies are equal
+             return a.first > b.first; // Sort by frequency
+         }
+        );
         
         string ans="";
         
-        vector<pair<int,char>> v;
-        
-        for(auto ch: um)
-        v.push_back({ch.second,ch.first});
-        
-        sort( v.begin(),v.end(), 
-             [](auto a, auto b)
-             {return a.first > b.first || (a.first==b.first && a.second > b.second);}
-            );
-        
-        for(auto ch: v)
-        {
-            while(ch.first--)
-                ans+=ch.second;
-        }
+        for(auto& it: map)
+            if(it.first != 0)
+                while((um[it.second]--)!=0)
+                ans += it.second; // Append character 'it.second' 'it.first' times
         
         return ans;
-        
     }
 };
