@@ -2,12 +2,12 @@ class Solution {
 public:
     char repeatedCharacter(string s) 
     {
-        unordered_map<char,int> um;
+        vector<int>um(26);
         
         for(auto&ch :s)
         {
-            um[ch]++;
-            if(um[ch]>1) return ch;
+            um[ch-'a']++;
+            if(um[ch-'a']==2) return ch;
         }
         
         return 'a';
