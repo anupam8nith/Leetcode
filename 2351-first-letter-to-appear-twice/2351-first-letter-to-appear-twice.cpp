@@ -4,7 +4,7 @@ public:
     {
         vector<int>um(26);
         
-        for(auto&ch :s)
+        for(char ch :s)
         {
             um[ch-'a']++;
             if(um[ch-'a']==2) return ch;
