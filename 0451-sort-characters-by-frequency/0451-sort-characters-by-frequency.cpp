@@ -13,8 +13,8 @@ public:
         sort(map.begin(),map.end(),[](pair<int,char>& a, pair<int,char>& b)
          {
              if(a.first == b.first)
-                 return a.second < b.second; // Sort alphabetically if frequencies are equal
-             return a.first > b.first; // Sort by frequency
+                 return a.second < b.second; 
+             return a.first > b.first;
          }
         );
         
@@ -23,7 +23,7 @@ public:
         for(auto& it: map)
             if(it.first != 0)
                 while((um[it.second]--)!=0)
-                ans += it.second; // Append character 'it.second' 'it.first' times
+                ans += it.second;
         
         return ans;
     }
