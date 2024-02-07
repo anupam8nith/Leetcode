@@ -1,30 +1,23 @@
+#pragma GCC optimize("O3", "unroll-loops")
 class Solution {
 public:
-    string frequencySort(string s) 
-    {
-        unordered_map<char,int> um;
-        for(auto& ch: s)um[ch]++;
-        
-        vector<pair<int,char>> map;
-        
-        for(auto it: um)map.push_back({it.second,it.first});
+    string frequencySort(string& s) {
+        using int_char=pair<int, char>;
+        int freq[75];//'0'=48 'z'=122=>'z'-'0'+1=75        
+        for(char c : s)
+            freq[c-'0']++;
 
-        
-        sort(map.begin(),map.end(),[](pair<int,char>& a, pair<int,char>& b)
-         {
-             if(a.first == b.first)
-                 return a.second < b.second; 
-             return a.first > b.first;
-         }
-        );
-        
-        string ans="";
-        
-        for(auto& it: map)
-            if(it.first != 0)
-                while((um[it.second]--)!=0)
-                ans += it.second;
-        
-        return ans;
+        vector<int_char> freq_c;
+        for(char c='0'; c<='z'; c++){
+            if (freq[c-'0']==0) continue;
+            freq_c.emplace_back(freq[c-'0'], c);
+        }
+        sort(freq_c.begin(), freq_c.end(), greater<int_char>());
+        string ans;
+        for (auto& [n, c]: freq_c){
+            ans+=string(n, c);
+        }
+//        cout<<ans<<endl;
+        return ans;       
     }
 };
