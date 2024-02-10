@@ -2,9 +2,7 @@ class Solution {
     bool isPalindrome(string s)
     {
         int l=0, h=s.size()-1;
-        
         while(l<h) if(s[l++]!=s[h--]) return false;
-        
         return true; 
     }
     
