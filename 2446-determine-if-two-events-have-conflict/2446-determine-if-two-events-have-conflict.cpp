@@ -1,7 +1,6 @@
 class Solution {
 public:
-    bool haveConflict(vector<string>& event1, vector<string>& event2) 
-    {
-         return event1[0] <= event2[1] && event2[0] <= event1[1];
+    bool haveConflict(vector<string>& e1, vector<string>& e2) {
+        return e1[0] <= e2[1] && e2[0] <= e1[1];
     }
 };
