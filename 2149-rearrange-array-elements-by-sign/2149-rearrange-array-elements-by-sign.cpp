@@ -3,6 +3,7 @@ class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) 
     {
+        ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
         int sz = nums.size(),p=0,n=0; vector<int> ans;
         
         while(nums[p]<0)p++; while(nums[n]>0)n++;
