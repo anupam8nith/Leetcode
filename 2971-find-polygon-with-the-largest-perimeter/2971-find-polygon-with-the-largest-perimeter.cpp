@@ -1,4 +1,4 @@
-#pragma GCC optimize("O3,fast-math")
+#pragma GCC optimize("O3")
 class Solution {
 public:
     long long largestPerimeter(vector<int>& nums) 
