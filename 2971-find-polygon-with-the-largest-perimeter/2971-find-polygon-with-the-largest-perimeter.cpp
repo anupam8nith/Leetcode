@@ -1,3 +1,4 @@
+#pragma GCC optimize("Ofast")
 class Solution {
 public:
     long long largestPerimeter(vector<int>& nums) 
