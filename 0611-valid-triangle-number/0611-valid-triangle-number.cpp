@@ -1,16 +1,26 @@
 #pragma GCC optimize("O3")
-class Solution {
+class Solution 
+{
 public:
     int triangleNumber(vector<int>& nums) 
     {
-        sort(nums.begin(),nums.end()); int n= nums.size(), ans=0;
+        int ans = 0, n = nums.size();
         
-        for(int i=0;i<n;i++)
-            for(int j=i+1;j<n;j++)
-            {
-                int idx = lower_bound(nums.begin()+j+1,nums.end(),nums[j]+nums[i]) - nums.begin();
-                ans+=idx-j-1;
+        sort(nums.begin(), nums.end());
+        
+        for (int i = n-1; i >= 0; i--) {
+            int lo = 0, hi = i-1;
+            
+            while (lo < hi) {
+                if (nums[lo] + nums[hi] > nums[i]) {
+                    ans += hi - lo;
+                    hi--;
+                }
+                
+                else lo++;
             }
+        }
+        
         return ans;
     }
 };
