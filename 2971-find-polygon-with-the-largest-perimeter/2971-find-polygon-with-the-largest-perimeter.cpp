@@ -3,7 +3,7 @@ class Solution {
 public:
     long long largestPerimeter(vector<int>& nums) 
     {
-        ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+        ios::sync_with_stdio(false);cin.tie(NULL);
         sort(nums.begin(),nums.end()); int n = nums.size();
         
         vector<long long> sum(n); sum[0]=nums[0];
