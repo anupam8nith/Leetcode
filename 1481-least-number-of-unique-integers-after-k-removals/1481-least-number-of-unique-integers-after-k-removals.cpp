@@ -1,30 +1,24 @@
-#pragma GCC optimize("O3")
 class Solution {
 public:
     int findLeastNumOfUniqueInts(vector<int>& arr, int k) 
     {
-        ios_base::sync_with_stdio(false);
         unordered_map<int, int> um;
-        for (auto it : arr)
-            um[it]++;
+        for (auto it : arr) um[it]++;
         
-        sort(arr.begin(), arr.end()-1, [&um](const int a, const int b)
+        vector<pair<int,int>> freq;
+        
+        for(auto it: um)freq.push_back({it.second,it.first});
+        
+        sort(freq.begin(),freq.end());
+        
+        int rmv=0;
+        for (auto it : freq)
         {
-            if (um[a] == um[b])
-                return a <= b;
-            return um[a] < um[b];
-        });
-        
-        if(um[arr[arr.size()-1]]==1){--k;um.erase(arr[arr.size()-1]);}
-        
-        for (auto it : arr)
-        {
-            if (um[it] > k) 
+            if (it.first > k) 
                 return um.size();
-            k -= um[it];
-            um.erase(it);
+            k -= it.first;
+            um.erase(it.second);
         }
-        
         
         return um.size();
     }
