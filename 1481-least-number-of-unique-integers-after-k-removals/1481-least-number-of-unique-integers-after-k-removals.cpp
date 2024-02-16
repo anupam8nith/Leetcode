@@ -1,3 +1,4 @@
+#pragma GCC optimize("O3")
 class Solution {
 public:
     int findLeastNumOfUniqueInts(vector<int>& arr, int k) 
