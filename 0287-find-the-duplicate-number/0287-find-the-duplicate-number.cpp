@@ -1,27 +1,21 @@
+// #pragma GCC optimize("O3")
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) 
     {
-        
         ios_base::sync_with_stdio(false);
-        cin.tie(NULL) ;
-        
-        int slow =nums[nums[0]], fast = nums[slow];
-        
-        while(fast!=slow)
+        int m = nums.size();
+         for(int i=0;i<m;i++)
         {
-            slow = nums[slow];
-            fast= nums[nums[fast]];
+            //while loop runs till correct number on its place or the necessary condition fails
+           while(nums[i]!=i+1) 
+           {
+               if (nums[i] == nums[ (nums[i] - 1) ])break; //if both are same then no need to run loop
+               swap(nums[i],nums[nums[i]-1]); //swap till they are at their required place
+           }
         }
-        
-        slow=nums[0];
-        
-        while(fast!=slow)
-        {
-            slow = nums[slow];
-            fast = nums[fast];
-        }
-        
-        return fast;
+        // for(auto it: nums)cout<<it<<" ";
+
+        return nums[m-1];
     }
 };
