@@ -1,18 +1,46 @@
 class Solution {
 public:
-    //bellman ford.
-    //just run it k+1 iterations.
-    int findCheapestPrice(int n, vector<vector<int>>& a, int src, int sink, int k) {
-        
-        vector<int> c(n, 1e8);
-        c[src] = 0;
-        
-        for(int z=0; z<=k; z++){
-            vector<int> C(c);
-            for(auto e: a)
-                C[e[1]] = min(C[e[1]], c[e[0]] + e[2]);
-            c = C;
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
+        vector<vector<pair<int,int>>> adj(n); // Initialize adjacency list
+
+        // Populate adjacency list
+        for (const auto& flight : flights) {
+            int u = flight[0];
+            int v = flight[1];
+            int w = flight[2];
+            adj[u].push_back({v, w});
         }
-        return c[sink] == 1e8 ? -1 : c[sink];
+
+        priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> pq;
+        vector<vector<int>> dist(n, vector<int>(k + 1, INT_MAX)); // 2D array to store distances with k stops
+
+        pq.push({0, {src, 0}}); // {cost, {node, stops}}
+        dist[src][0] = 0;
+
+        while (!pq.empty()) {
+            int cost = pq.top().first;
+            int node = pq.top().second.first;
+            int stops = pq.top().second.second;
+            pq.pop();
+
+            if (node == dst) return cost; // Found destination
+
+            if (stops > k) continue; // Exceeded stop limit
+
+            for ( auto it : adj[node]) {
+
+                int next_node=it.first;
+                int next_cost=it.second;
+                //int new_cost = cost + next_cost;
+                if (cost + next_cost< dist[next_node][stops]) {
+                   int  new_cost = cost + next_cost;
+
+                    dist[next_node][stops] = new_cost;
+                    pq.push({new_cost, {next_node, stops +1}});
+                }
+            }
+        }
+
+        return -1; // Destination not reachable within k stops
     }
 };
