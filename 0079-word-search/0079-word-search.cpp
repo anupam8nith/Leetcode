@@ -1,50 +1,36 @@
 class Solution {
 public:
-    int rows, cols;
-    
-    bool isValid(int x, int y) {
-        return x >= 0 && x < rows && y >= 0 && y < cols;
-    }
-    
-    bool dfs(vector<vector<char>>& board, string& word, int i, int j, int p, vector<vector<bool>>& visited) {
-        // Base case: if the current position is out of bounds or the character doesn't match
-        if (!isValid(i, j) || board[i][j] != word[p] || visited[i][j]) return false;
+    //pass board by reference
+    bool DFS(vector<vector<char>>& board, string word, int i, int j, int n) {
+		//check if all the alphabets in the word is checked
+        if(n == word.size()) return true; 
         
-        // If we have matched all characters of the word
-        if (p == word.length() - 1) return true;
+		//check if i and j are out of bound or if the characters aren't equal
+        if(i < 0 || i >= board.size() || j < 0 || j >= board[i].size() || board[i][j] != word[n]) return false;
         
-        // Mark the current cell as visited
-        visited[i][j] = true;
+		//mark as visited 
+        board[i][j] = '0';
         
-        // Explore in all four directions
-        int dx[4] = {0, 1, 0, -1};
-        int dy[4] = {1, 0, -1, 0};
-        for (int k = 0; k < 4; k++) {
-            int ni = i + dx[k];
-            int nj = j + dy[k];
-            if (dfs(board, word, ni, nj, p + 1, visited)) return true;
-        }
+		//branch out in all 4 directions
+        bool status = DFS(board, word, i + 1, j, n + 1) ||  //down
+                        DFS(board, word, i, j + 1, n + 1) ||  //right
+                        DFS(board, word, i - 1, j, n + 1) ||  //up
+                        DFS(board, word, i, j - 1, n + 1);  //left
         
-        // Backtrack: unmark the current cell as visited
-        visited[i][j] = false;
-        
-        return false;
+		//change the character back for other searches
+        board[i][j] = word[n];
+		
+        return status;
     }
     
     bool exist(vector<vector<char>>& board, string word) {
-        rows = board.size();
-        cols = board[0].size();
+        if(word == "") return false;
         
-        // Create a visited array to keep track of visited cells
-        vector<vector<bool>> visited(rows, vector<bool>(cols, false));
-        
-        // Iterate through the board to find the starting point for DFS
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (board[i][j] == word[0] && dfs(board, word, i, j, 0, visited))
+        for(int i = 0; i < board.size(); i++) 
+            for(int j = 0; j < board[i].size(); j++) 
+				//check if the characters are equal then call DFS
+                if(board[i][j] == word[0] && DFS(board, word, i, j, 0))
                     return true;
-            }
-        }
         
         return false;
     }
