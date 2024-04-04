@@ -1,47 +1,46 @@
-
 class Trie {
     
 private:
-    
     struct TrieNode
     {
-        struct TrieNode *child[26];
-        bool endofword;
+        TrieNode *link[26];
+        bool endofword;      
     };
-    TrieNode* node;    
-
+    TrieNode *node;
+    
 public:
-    Trie() 
-    {
-     node = new TrieNode();
+    Trie() {
+        node = new TrieNode();
     }
     
     void insert(string word) 
     {
-        TrieNode *curr= node;
+        TrieNode *curr = node;
         
-        for(auto temp: word)
+        for(char ch: word)
         {
-            if(curr->child[temp-'a']==NULL) curr->child[temp-'a'] = new TrieNode();
-            curr=curr->child[temp-'a'];
+            if(!curr->link[ch-'a'])curr->link[ch-'a'] = new TrieNode();
+            curr = curr->link[ch-'a'];
         }
         
-        curr->endofword=true;
+        curr->endofword= true;
     }
     
     bool search(string word) 
     {
-        TrieNode *curr=node;
+        TrieNode *curr = node;
         
-        for(char temp: word)
+        for(char ch: word)
         {
-            if(curr->child[temp-'a']==NULL) return false;
-            curr= curr->child[temp-'a'];
+            if(!curr->link[ch-'a']) return false;
+            curr = curr->link[ch-'a'];
         }
         
+        
         if(curr->endofword==true) return true;
-            
+        
         return false;
+        
     }
     
     bool startsWith(string prefix) 
@@ -50,11 +49,11 @@ public:
         
         for(char ch: prefix)
         {
-            if(curr->child[ch-'a']==NULL) return false;
-            curr= curr->child[ch-'a'];
+            if(!curr->link[ch-'a']) return false;
+            curr = curr->link[ch-'a'];
         }
-        
-        return true;
+             
+       return true;
     }
 };
 
