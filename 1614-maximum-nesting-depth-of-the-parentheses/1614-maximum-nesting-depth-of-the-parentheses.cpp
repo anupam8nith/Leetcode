@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    int vps(string& s)
+    int maxDepth(string s) 
     {
         int depth=0, mxdepth=0;
         
@@ -16,10 +16,5 @@ public:
         }
         
         return mxdepth;
-    }
-    
-    int maxDepth(string s) 
-    {
-        return vps(s);
     }
 };
