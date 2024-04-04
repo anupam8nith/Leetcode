@@ -8,11 +8,9 @@ public:
         for(char ch: s)
         {
             if(ch=='(')
-                depth++;
+               mxdepth=max(mxdepth,++depth);
             else if(ch==')')
                 depth--;
-            
-            mxdepth=max(mxdepth,depth);
         }
         
         return mxdepth;
