@@ -34,9 +34,6 @@ public:
             TreeNode *node = new TreeNode(val,root,NULL);
             return node;
         }
-        
-        
-        
         queue<TreeNode*> q; q.push(root);
         int lvl=1;
         
@@ -57,11 +54,8 @@ public:
                 if(curr->right)q.push(curr->right);
             }
            
-            ++lvl;
-            
+            ++lvl;   
         }
-        
-        // if(lvl)
         
         return root;
     }
