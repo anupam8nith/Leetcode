@@ -1,28 +1,41 @@
-class Solution {
+class Solution 
+{
 public:
-    void DFS(vector<vector<char>>& grid, int x, int y) {
-        if (x < 0 || x >= grid.size() || y < 0 || y >= grid[0].size() || grid[x][y] == '0') return;
-        
-        grid[x][y] = '0';
-        
-        DFS(grid, x + 1, y);
-        DFS(grid, x - 1, y);
-        DFS(grid, x, y + 1);
-        DFS(grid, x, y - 1);
+
+    int row,col;
+
+    bool isValid(int &x,int&y)
+    {
+        return !(x<0 || x>=row || y<0 || y>=col);
+    }
+
+    void dfs(vector<vector<char>>& grid,int i,int j)
+    {
+        if(!isValid(i,j) || grid[i][j]=='0') return;
+
+        grid[i][j]='0';
+
+        vector<int> dx = {-1, 0, 0, 1};
+        vector<int> dy = {0, -1, 1, 0};
+
+        for(int k=0;k<4;k++)
+            dfs(grid,i+dx[k],j+dy[k]);
+
     }
     
-    int numIslands(vector<vector<char>>& grid) {
-        int res = 0, n = grid.size(), m = grid[0].size();
-        
-        for (int i = 0; i <n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (grid[i][j] == '1') {
-                    res++;
-                    DFS(grid, i, j);
-                } 
-            }
-        }
-        
-        return res;
+    
+    int numIslands(vector<vector<char>>& grid) 
+    {
+        row = size(grid), col = size(grid[0]); int island=0;
+
+        for(int i=0;i<row;i++)
+            for(int j=0;j<col;j++)
+                if(grid[i][j]!='0')
+                {
+                    dfs(grid,i,j);
+                    island++;
+                }
+
+        return island;
     }
 };
