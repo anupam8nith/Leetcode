@@ -4,22 +4,17 @@ public:
 
     int row,col;
 
-    bool isValid(int &x,int&y)
+    void dfs(vector<vector<char>>& grid,int x,int y)
     {
-        return !(x<0 || x>=row || y<0 || y>=col);
-    }
+        if(x<0 || x>=row || y<0 || y>=col || grid[x][y]=='0') return;
 
-    void dfs(vector<vector<char>>& grid,int i,int j)
-    {
-        if(!isValid(i,j) || grid[i][j]=='0') return;
-
-        grid[i][j]='0';
+        grid[x][y]='0';
 
         vector<int> dx = {-1, 0, 0, 1};
         vector<int> dy = {0, -1, 1, 0};
 
         for(int k=0;k<4;k++)
-            dfs(grid,i+dx[k],j+dy[k]);
+            dfs(grid,x+dx[k],y+dy[k]);
 
     }
     
