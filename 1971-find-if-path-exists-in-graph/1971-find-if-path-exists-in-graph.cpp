@@ -1,29 +1,33 @@
-class Solution 
-{
+class Solution {
 public:
-    bool dfs(vector<vector<int>>& adj, vector<bool>& visited, int curr, int destination) 
+    void dfs(unordered_map<int,vector<int>> &adj,vector<bool> &visited,int start, int end)
     {
-        if (curr == destination) return true; visited[curr] = true;
+        visited[start]=true; //just visit the node and mark visited
         
-        for (int neighbour : adj[curr]) 
-            if (!visited[neighbour] && dfs(adj, visited, neighbour, destination))
-                return true;
-            
-        return false;
+        for(auto neighbor: adj[start])
+            if(visited[neighbor]==false)dfs(adj,visited,neighbor,end);
+        
+        return;
     }
     
     bool validPath(int n, vector<vector<int>>& edges, int source, int destination) 
     {
-        if (source == destination) return true; vector<vector<int>> adj(n);
+        ios::sync_with_stdio(false);
+        cin.tie(NULL);cout.tie(NULL);
         
-        for (const auto& edge : edges) 
+        if(source==destination || n==1) return true;
+        
+        unordered_map<int,vector<int>> adj;
+        vector<bool> visited(n+1,false); //visited bool array
+        
+        for(int i=0;i<edges.size();i++) //prepare an adjacency list
         {
-            adj[edge[0]].push_back(edge[1]);
-            adj[edge[1]].push_back(edge[0]); 
+            adj[edges[i][0]].push_back(edges[i][1]);
+            adj[edges[i][1]].push_back(edges[i][0]);
         }
+        dfs(adj,visited,source,destination);
         
-        vector<bool> visited(n, false);
+        return visited[destination]; //return true if we have been there
         
-        return dfs(adj, visited, source, destination);
     }
 };
