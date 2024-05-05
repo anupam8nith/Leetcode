@@ -2,18 +2,19 @@ class Solution {
 public:
     int numRescueBoats(vector<int>& people, int limit) 
     {
-        multiset<int> st(people.begin(),people.end());
-        int cnt = 0;
-        while(!st.empty()){
-            auto frst = st.begin();
-            auto fnd = st.upper_bound(limit-*frst);
-            if(fnd!=st.begin()){
-                --fnd;
-                if(frst!=fnd)st.erase(fnd);
+        multiset<int> ms(people.begin(),people.end());
+        int ans = 0;
+        while(!ms.empty()){
+            auto ptr1 = ms.begin();
+            auto ptr2 = ms.upper_bound(limit-*ptr1);
+            if(ptr2!=ms.begin())
+            {
+                --ptr2;
+                if(ptr1!=ptr2)ms.erase(ptr2);
             }
-            st.erase(frst);
-            cnt++;
+            ms.erase(ptr1);
+            ans++;
         }
-        return cnt;
+        return ans;
     }
 };
