@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<int> kthSmallestPrimeFraction(vector<int>& arr, int k) {
-        sort(arr.begin(), arr.end());
         priority_queue<pair<double, pair<int, int>>> pq;
         int n = arr.size();
         for (int i = 0; i < n - 1; i++) {
