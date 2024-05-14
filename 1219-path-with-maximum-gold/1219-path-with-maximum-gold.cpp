@@ -1,8 +1,10 @@
-class Solution {
+class Solution 
+{
 public:
     int m,n; 
     vector<int> dx = {1,-1,0,0};
     vector<int> dy = {0,0,1,-1};
+    
     bool isvalid(int x, int y)
     {
         if( x>=m || x<0 ||y>=n || y<0) return false;
@@ -11,8 +13,7 @@ public:
     
     int dfs(vector<vector<int>>& grid,  vector<vector<bool>>&visited, int sum, int i, int j)
     {
-        // sum+=grid[i][j];
-        
+        sum+=grid[i][j];
         
         //perform dfs again and choose the best option
         int val=grid[i][j];
