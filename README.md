@@ -34,4 +34,12 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1424-maximum-candies-you-can-get-from-boxes](https://github.com/anupam8nith/Leetcode/tree/master/1424-maximum-candies-you-can-get-from-boxes) |
+## Depth-First Search
+|  |
+| ------- |
+| [0386-lexicographical-numbers](https://github.com/anupam8nith/Leetcode/tree/master/0386-lexicographical-numbers) |
+## Trie
+|  |
+| ------- |
+| [0386-lexicographical-numbers](https://github.com/anupam8nith/Leetcode/tree/master/0386-lexicographical-numbers) |
 <!---LeetCode Topics End-->
